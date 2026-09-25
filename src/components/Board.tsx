@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { createBoard } from "@/game/boards";
 import { Board as BoardType, GameStatus } from "@/types/games";
 import Cell from "./Cell";
 
@@ -80,6 +81,10 @@ export default function Board({ board: initialBoard }: BoardProps) {
         return true;
     }
 
+    function resetGame() {
+        setBoard(createBoard());
+        setGameStatus("playing");
+    }
 
     function revealCell(row: number, col: number) {
         if (gameStatus !== "playing") return;
@@ -123,6 +128,13 @@ export default function Board({ board: initialBoard }: BoardProps) {
         }
     }
 
+    <button
+        onClick={resetGame}
+        className="rounded-md bg-black px-4 py-2 text-white hover:bg-gray-800"
+    >
+        New Game
+    </button>
+
     return (
         <div className="flex flex-col items-center gap-4">
             <div className="inline-grid grid-cols-9">
@@ -146,6 +158,14 @@ export default function Board({ board: initialBoard }: BoardProps) {
                     You Won! 🎉
                 </p>
             )}
+
+            <button
+                onClick={resetGame}
+                className="rounded-md bg-black px-4 py-2 text-white hover:bg-gray-800"
+            >
+                New Game
+            </button>
+
         </div>
     );
 }
