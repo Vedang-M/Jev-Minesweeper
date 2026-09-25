@@ -2,14 +2,21 @@ import { Cell as CellType } from "@/types/games";
 
 type CellProps = {
     cell: CellType;
+    onClick: () => void;
 };
 
-export default function Cell({ cell }: CellProps) {
+export default function Cell({ cell, onClick }: CellProps) {
     return (
         <button
-            className="h-10 w-10 border border-gray-400 bg-white text-lg font-bold text-black"
+            onClick={onClick}
+            className={`h-10 w-10 border border-gray-400 text-lg font-bold ${cell.isRevealed ? "bg-gray-100 text-black" : "bg-white text-black"
+                }`}
         >
-            {cell.isMine ? "💣" : cell.adjacentMines}
+            {cell.isRevealed
+                ? cell.isMine
+                    ? "💣"
+                    : cell.adjacentMines
+                : ""}
         </button>
     );
 }

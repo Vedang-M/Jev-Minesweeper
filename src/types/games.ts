@@ -8,6 +8,6 @@ export type Cell = {
 
 };
 
-export type GameStatus = "Playing" | "Won" | "Lost";
+export type GameStatus = "playing" | "won" | "lost";
 
 export type Board = Cell[][];
