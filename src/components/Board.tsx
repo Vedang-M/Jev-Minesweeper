@@ -86,12 +86,29 @@ export default function Board({ board: initialBoard }: BoardProps) {
         setGameStatus("playing");
     }
 
+    function toggleFlag(row: number, col: number) {
+        if (gameStatus !== "playing") return;
+
+        const cell = board[row][col];
+
+        if (cell.isRevealed) return;
+
+        const newBoard = board.map((currentRow) =>
+            currentRow.map((currentCell) => ({ ...currentCell }))
+        );
+
+        newBoard[row][col].isFlagged =
+            !newBoard[row][col].isFlagged;
+
+        setBoard(newBoard);
+    }
+
     function revealCell(row: number, col: number) {
         if (gameStatus !== "playing") return;
 
         const clickedCell = board[row][col];
 
-        if (clickedCell.isRevealed) return;
+        if (clickedCell.isRevealed || clickedCell.isFlagged) return;
 
         // If the player clicks a mine
         if (clickedCell.isMine) {
@@ -143,6 +160,9 @@ export default function Board({ board: initialBoard }: BoardProps) {
                         key={`${cell.row}-${cell.col}`}
                         cell={cell}
                         onClick={() => revealCell(cell.row, cell.col)}
+                        onRightClick={() =>
+                            toggleFlag(cell.row, cell.col)
+                        }
                     />
                 ))}
             </div>
