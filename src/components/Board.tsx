@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createBoard } from "@/game/boards";
 import { Board as BoardType, GameStatus } from "@/types/games";
 import { mines } from "@/game/boards";
@@ -13,6 +13,17 @@ type BoardProps = {
 export default function Board({ board: initialBoard }: BoardProps) {
     const [board, setBoard] = useState(initialBoard);
     const [gameStatus, setGameStatus] = useState<GameStatus>("playing");
+    const [time, setTime] = useState(0);
+
+    useEffect(() => {
+        if (gameStatus !== "playing") return;
+
+        const timer = setInterval(() => {
+            setTime((currentTime) => currentTime + 1);
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, [gameStatus]);
 
     const flaggedCount = board.flat().filter(
         (cell) => cell.isFlagged
@@ -91,6 +102,7 @@ export default function Board({ board: initialBoard }: BoardProps) {
     function resetGame() {
         setBoard(createBoard());
         setGameStatus("playing");
+        setTime(0);
     }
 
     function toggleFlag(row: number, col: number) {
@@ -164,8 +176,9 @@ export default function Board({ board: initialBoard }: BoardProps) {
     return (
         <div className="flex flex-col items-center gap-4">
 
-            <div className="text-lg font-bold text-black">
-                💣 {remainingMines}
+            <div className="flex gap-6 text-lg font-bold text-black">
+                <span>💣 {remainingMines}</span>
+                <span>⏱️ {time}s</span>
             </div>
 
             <div className="inline-grid grid-cols-9">
