@@ -31,6 +31,12 @@ export default function Board({ board: initialBoard }: BoardProps) {
             reason: string;
         } | null>(null);
 
+    const [jevSuggestion, setJevSuggestion] = useState<{
+        row: number;
+        col: number;
+        confidence: number;
+    } | null>(null);
+
     const [difficulty, setDifficulty] =
         useState<Difficulty>("easy");
 
@@ -271,6 +277,42 @@ export default function Board({ board: initialBoard }: BoardProps) {
         }
     }
 
+    async function askJev() {
+        if (gameStatus !== "playing") return;
+
+        try {
+            const response = await fetch("/api/jev", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    state: board,
+                }),
+            });
+
+            const result = await response.json();
+
+            const choice = result.answers?.move?.choice;
+            const confidence = result.answers?.move?.confidence;
+
+            if (!choice || confidence === undefined) {
+                setJevSuggestion(null);
+                return;
+            }
+
+            const [row, col] = choice.split("-").map(Number);
+
+            setJevSuggestion({
+                row,
+                col,
+                confidence,
+            });
+        } catch (error) {
+            console.error("JEV request failed:", error);
+            setJevSuggestion(null);
+        }
+    }
     return (
         <div className="flex flex-col items-center gap-4">
 
@@ -317,17 +359,13 @@ export default function Board({ board: initialBoard }: BoardProps) {
                     <Cell
                         key={`${cell.row}-${cell.col}`}
                         cell={cell}
-                        onClick={() =>
-                            revealCell(
-                                cell.row,
-                                cell.col
-                            )
+                        isSuggested={
+                            jevSuggestion?.row === cell.row &&
+                            jevSuggestion?.col === cell.col
                         }
+                        onClick={() => revealCell(cell.row, cell.col)}
                         onRightClick={() =>
-                            toggleFlag(
-                                cell.row,
-                                cell.col
-                            )
+                            toggleFlag(cell.row, cell.col)
                         }
                     />
                 ))}
@@ -351,6 +389,12 @@ export default function Board({ board: initialBoard }: BoardProps) {
                 Suggest Move
             </button>
 
+            <button
+                onClick={askJev}
+                className="rounded-md bg-purple-600 px-4 py-2 text-white hover:bg-purple-700"
+            >
+                Ask JEV
+            </button>
             <button
                 onClick={resetGame}
                 className="rounded-md bg-black px-4 py-2 text-white hover:bg-gray-800"
