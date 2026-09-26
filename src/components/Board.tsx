@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { createBoard } from "@/game/boards";
 import { Board as BoardType, GameStatus } from "@/types/games";
+import { mines } from "@/game/boards";
 import Cell from "./Cell";
 
 type BoardProps = {
@@ -12,6 +13,12 @@ type BoardProps = {
 export default function Board({ board: initialBoard }: BoardProps) {
     const [board, setBoard] = useState(initialBoard);
     const [gameStatus, setGameStatus] = useState<GameStatus>("playing");
+
+    const flaggedCount = board.flat().filter(
+        (cell) => cell.isFlagged
+    ).length;
+
+    const remainingMines = mines - flaggedCount;
 
     function revealEmptyCells(
         currentBoard: BoardType,
@@ -93,6 +100,8 @@ export default function Board({ board: initialBoard }: BoardProps) {
 
         if (cell.isRevealed) return;
 
+        if (!cell.isFlagged && flaggedCount >= mines) return;
+
         const newBoard = board.map((currentRow) =>
             currentRow.map((currentCell) => ({ ...currentCell }))
         );
@@ -154,6 +163,11 @@ export default function Board({ board: initialBoard }: BoardProps) {
 
     return (
         <div className="flex flex-col items-center gap-4">
+
+            <div className="text-lg font-bold text-black">
+                💣 {remainingMines}
+            </div>
+
             <div className="inline-grid grid-cols-9">
                 {board.flat().map((cell) => (
                     <Cell
