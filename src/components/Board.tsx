@@ -9,6 +9,7 @@ import {
     placeMines,
     calculateAdjacentMines,
 } from "@/game/boards";
+import { findSafeMoves } from "@/game/solver";
 import Cell from "./Cell";
 
 type BoardProps = {
@@ -21,6 +22,13 @@ export default function Board({ board: initialBoard }: BoardProps) {
         useState<GameStatus>("playing");
 
     const [time, setTime] = useState(0);
+
+    const [suggestion, setSuggestion] =
+        useState<{
+            row: number;
+            col: number;
+            reason: string;
+        } | null>(null);
 
     const [difficulty, setDifficulty] =
         useState<Difficulty>("easy");
@@ -149,6 +157,19 @@ export default function Board({ board: initialBoard }: BoardProps) {
             !newBoard[row][col].isFlagged;
 
         setBoard(newBoard);
+    }
+
+    function suggestMove() {
+        if (gameStatus !== "playing") return;
+
+        const safeMoves = findSafeMoves(board);
+
+        if (safeMoves.length === 0) {
+            setSuggestion(null);
+            return;
+        }
+
+        setSuggestion(safeMoves[0]);
     }
 
     function revealCell(row: number, col: number) {
@@ -298,6 +319,12 @@ export default function Board({ board: initialBoard }: BoardProps) {
                     You Won! 🎉
                 </p>
             )}
+            <button
+                onClick={suggestMove}
+                className="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+            >
+                Suggest Move
+            </button>
 
             <button
                 onClick={resetGame}
@@ -305,7 +332,23 @@ export default function Board({ board: initialBoard }: BoardProps) {
             >
                 New Game
             </button>
+            {suggestion && (
+                <div className="text-center text-black">
+                    <p className="font-bold">
+                        Try: ({suggestion.row}, {suggestion.col})
+                    </p>
 
+                    <p className="text-sm">
+                        {suggestion.reason}
+                    </p>
+                </div>
+            )}
+
+            {!suggestion && gameStatus === "playing" && (
+                <p className="text-sm text-gray-600">
+                    No guaranteed safe move found.
+                </p>
+            )}
         </div>
     );
 }
