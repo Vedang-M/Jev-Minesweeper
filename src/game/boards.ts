@@ -41,12 +41,19 @@ export function placeMines(
     board: Board,
     rows: number,
     cols: number,
-    mines: number
+    mines: number,
+    safeRow: number,
+    safeCol: number
 ): Board {
     const positions = Array.from(
         { length: rows * cols },
         (_, index) => index
-    );
+    ).filter((position) => {
+        const row = Math.floor(position / cols);
+        const col = position % cols;
+
+        return row !== safeRow || col !== safeCol;
+    });
 
     for (let i = positions.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -120,14 +127,8 @@ export function calculateAdjacentMines(
 export function createBoard(
     difficulty: Difficulty = "easy"
 ): Board {
-    const { rows, cols, mines } = difficulties[difficulty];
+    const { rows, cols } = difficulties[difficulty];
 
-    const board = createEmptyBoard(rows, cols);
-
-    placeMines(board, rows, cols, mines);
-    calculateAdjacentMines(board, rows, cols);
-
-    return board;
+    return createEmptyBoard(rows, cols);
 }
-
 const board = createBoard();

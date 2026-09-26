@@ -6,6 +6,8 @@ import {
     createBoard,
     difficulties,
     Difficulty,
+    placeMines,
+    calculateAdjacentMines,
 } from "@/game/boards";
 import Cell from "./Cell";
 
@@ -158,28 +160,32 @@ export default function Board({ board: initialBoard }: BoardProps) {
             return;
         }
 
-        if (clickedCell.isMine) {
-            const newBoard = board.map((currentRow) =>
+        const isFirstMove = !board.some((row) =>
+            row.some((cell) => cell.isMine)
+        );
+
+        let newBoard: BoardType;
+
+        if (isFirstMove) {
+            newBoard = board.map((currentRow) =>
                 currentRow.map((cell) => ({
                     ...cell,
                 }))
             );
 
-            newBoard[row][col].isRevealed = true;
-
-            setBoard(newBoard);
-            setGameStatus("lost");
-
-            return;
-        }
-
-        let newBoard: BoardType;
-
-        if (clickedCell.adjacentMines === 0) {
-            newBoard = revealEmptyCells(
-                board,
+            placeMines(
+                newBoard,
+                newBoard.length,
+                newBoard[0].length,
+                currentMines,
                 row,
                 col
+            );
+
+            calculateAdjacentMines(
+                newBoard,
+                newBoard.length,
+                newBoard[0].length
             );
         } else {
             newBoard = board.map((currentRow) =>
@@ -187,7 +193,28 @@ export default function Board({ board: initialBoard }: BoardProps) {
                     ...cell,
                 }))
             );
+        }
 
+        const updatedCell = newBoard[row][col];
+
+
+        if (updatedCell.isMine) {
+            updatedCell.isRevealed = true;
+
+            setBoard(newBoard);
+            setGameStatus("lost");
+
+            return;
+        }
+
+
+        if (updatedCell.adjacentMines === 0) {
+            newBoard = revealEmptyCells(
+                newBoard,
+                row,
+                col
+            );
+        } else {
             newBoard[row][col].isRevealed = true;
         }
 
