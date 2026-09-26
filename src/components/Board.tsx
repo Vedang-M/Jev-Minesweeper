@@ -164,7 +164,6 @@ export default function Board({ board: initialBoard }: BoardProps) {
         if (gameStatus !== "playing") return;
 
         const constraints = extractConstraints(board);
-
         const result = solveConstraints(constraints);
 
         if (result.safeCells.length > 0) {
@@ -175,7 +174,7 @@ export default function Board({ board: initialBoard }: BoardProps) {
             setSuggestion({
                 row,
                 col,
-                reason: "Constraint analysis proves this cell is safe.",
+                reason: "🟢 This cell is proven safe.",
             });
 
             return;
@@ -189,7 +188,7 @@ export default function Board({ board: initialBoard }: BoardProps) {
             setSuggestion({
                 row,
                 col,
-                reason: "Constraint analysis indicates this cell is a mine.",
+                reason: "🔴 This cell is proven to be a mine.",
             });
 
             return;
