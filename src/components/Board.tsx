@@ -1,9 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { createBoard } from "@/game/boards";
 import { Board as BoardType, GameStatus } from "@/types/games";
-import { mines } from "@/game/boards";
+import {
+    createBoard,
+    difficulties,
+    Difficulty,
+} from "@/game/boards";
 import Cell from "./Cell";
 
 type BoardProps = {
@@ -12,8 +15,21 @@ type BoardProps = {
 
 export default function Board({ board: initialBoard }: BoardProps) {
     const [board, setBoard] = useState(initialBoard);
-    const [gameStatus, setGameStatus] = useState<GameStatus>("playing");
+    const [gameStatus, setGameStatus] =
+        useState<GameStatus>("playing");
+
     const [time, setTime] = useState(0);
+
+    const [difficulty, setDifficulty] =
+        useState<Difficulty>("easy");
+
+    const currentMines = difficulties[difficulty].mines;
+
+    const flaggedCount = board.flat().filter(
+        (cell) => cell.isFlagged
+    ).length;
+
+    const remainingMines = currentMines - flaggedCount;
 
     useEffect(() => {
         if (gameStatus !== "playing") return;
@@ -24,12 +40,6 @@ export default function Board({ board: initialBoard }: BoardProps) {
 
         return () => clearInterval(timer);
     }, [gameStatus]);
-
-    const flaggedCount = board.flat().filter(
-        (cell) => cell.isFlagged
-    ).length;
-
-    const remainingMines = mines - flaggedCount;
 
     function revealEmptyCells(
         currentBoard: BoardType,
@@ -53,6 +63,7 @@ export default function Board({ board: initialBoard }: BoardProps) {
             const key = `${row}-${col}`;
 
             if (visited.has(key)) continue;
+
             visited.add(key);
 
             const cell = newBoard[row][col];
@@ -87,6 +98,7 @@ export default function Board({ board: initialBoard }: BoardProps) {
 
         return newBoard;
     }
+
     function checkWin(currentBoard: BoardType): boolean {
         for (const row of currentBoard) {
             for (const cell of row) {
@@ -99,8 +111,17 @@ export default function Board({ board: initialBoard }: BoardProps) {
         return true;
     }
 
+    function changeDifficulty(
+        newDifficulty: Difficulty
+    ) {
+        setDifficulty(newDifficulty);
+        setBoard(createBoard(newDifficulty));
+        setGameStatus("playing");
+        setTime(0);
+    }
+
     function resetGame() {
-        setBoard(createBoard());
+        setBoard(createBoard(difficulty));
         setGameStatus("playing");
         setTime(0);
     }
@@ -112,10 +133,14 @@ export default function Board({ board: initialBoard }: BoardProps) {
 
         if (cell.isRevealed) return;
 
-        if (!cell.isFlagged && flaggedCount >= mines) return;
+        if (!cell.isFlagged && flaggedCount >= currentMines) {
+            return;
+        }
 
         const newBoard = board.map((currentRow) =>
-            currentRow.map((currentCell) => ({ ...currentCell }))
+            currentRow.map((currentCell) => ({
+                ...currentCell,
+            }))
         );
 
         newBoard[row][col].isFlagged =
@@ -129,12 +154,15 @@ export default function Board({ board: initialBoard }: BoardProps) {
 
         const clickedCell = board[row][col];
 
-        if (clickedCell.isRevealed || clickedCell.isFlagged) return;
+        if (clickedCell.isRevealed || clickedCell.isFlagged) {
+            return;
+        }
 
-        // If the player clicks a mine
         if (clickedCell.isMine) {
             const newBoard = board.map((currentRow) =>
-                currentRow.map((cell) => ({ ...cell }))
+                currentRow.map((cell) => ({
+                    ...cell,
+                }))
             );
 
             newBoard[row][col].isRevealed = true;
@@ -147,13 +175,17 @@ export default function Board({ board: initialBoard }: BoardProps) {
 
         let newBoard: BoardType;
 
-        // If the player clicks an empty cell,
-        // reveal the connected empty area.
         if (clickedCell.adjacentMines === 0) {
-            newBoard = revealEmptyCells(board, row, col);
+            newBoard = revealEmptyCells(
+                board,
+                row,
+                col
+            );
         } else {
             newBoard = board.map((currentRow) =>
-                currentRow.map((cell) => ({ ...cell }))
+                currentRow.map((cell) => ({
+                    ...cell,
+                }))
             );
 
             newBoard[row][col].isRevealed = true;
@@ -166,29 +198,63 @@ export default function Board({ board: initialBoard }: BoardProps) {
         }
     }
 
-    <button
-        onClick={resetGame}
-        className="rounded-md bg-black px-4 py-2 text-white hover:bg-gray-800"
-    >
-        New Game
-    </button>
-
     return (
         <div className="flex flex-col items-center gap-4">
 
-            <div className="flex gap-6 text-lg font-bold text-black">
-                <span>💣 {remainingMines}</span>
-                <span>⏱️ {time}s</span>
+            <div className="flex gap-2">
+                <button
+                    onClick={() => changeDifficulty("easy")}
+                    className="rounded-md bg-gray-200 px-3 py-1 text-black hover:bg-gray-300"
+                >
+                    Easy
+                </button>
+
+                <button
+                    onClick={() => changeDifficulty("medium")}
+                    className="rounded-md bg-gray-200 px-3 py-1 text-black hover:bg-gray-300"
+                >
+                    Medium
+                </button>
+
+                <button
+                    onClick={() => changeDifficulty("hard")}
+                    className="rounded-md bg-gray-200 px-3 py-1 text-black hover:bg-gray-300"
+                >
+                    Hard
+                </button>
             </div>
 
-            <div className="inline-grid grid-cols-9">
+            <div className="flex gap-6 text-lg font-bold text-black">
+                <span>
+                    💣 {remainingMines}
+                </span>
+
+                <span>
+                    ⏱️ {time}s
+                </span>
+            </div>
+
+            <div
+                className="inline-grid"
+                style={{
+                    gridTemplateColumns: `repeat(${board[0].length}, 40px)`,
+                }}
+            >
                 {board.flat().map((cell) => (
                     <Cell
                         key={`${cell.row}-${cell.col}`}
                         cell={cell}
-                        onClick={() => revealCell(cell.row, cell.col)}
+                        onClick={() =>
+                            revealCell(
+                                cell.row,
+                                cell.col
+                            )
+                        }
                         onRightClick={() =>
-                            toggleFlag(cell.row, cell.col)
+                            toggleFlag(
+                                cell.row,
+                                cell.col
+                            )
                         }
                     />
                 ))}

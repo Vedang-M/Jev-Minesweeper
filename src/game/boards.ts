@@ -1,11 +1,30 @@
 import { Board, Cell } from "@/types/games";
 
-export const rows = 9;
-export const cols = 9;
-export const mines = 10;
+export type Difficulty = "easy" | "medium" | "hard";
+
+export const difficulties = {
+    easy: {
+        rows: 9,
+        cols: 9,
+        mines: 10,
+    },
+    medium: {
+        rows: 16,
+        cols: 16,
+        mines: 40,
+    },
+    hard: {
+        rows: 16,
+        cols: 30,
+        mines: 99,
+    },
+};
 
 
-export function createEmptyBoard(): Board {
+export function createEmptyBoard(
+    rows: number,
+    cols: number
+): Board {
     return Array.from({ length: rows }, (_, row) =>
         Array.from({ length: cols }, (_, col): Cell => ({
             row,
@@ -18,7 +37,12 @@ export function createEmptyBoard(): Board {
     );
 }
 
-export function placeMines(board: Board): Board {
+export function placeMines(
+    board: Board,
+    rows: number,
+    cols: number,
+    mines: number
+): Board {
     const positions = Array.from(
         { length: rows * cols },
         (_, index) => index
@@ -40,7 +64,12 @@ export function placeMines(board: Board): Board {
     return board;
 }
 
-function getNeighbors(row: number, col: number) {
+function getNeighbors(
+    row: number,
+    col: number,
+    rows: number,
+    cols: number
+) {
     const neighbors: { row: number; col: number }[] = [];
 
     for (let dr = -1; dr <= 1; dr++) {
@@ -67,12 +96,16 @@ function getNeighbors(row: number, col: number) {
     return neighbors;
 }
 
-export function calculateAdjacentMines(board: Board): Board {
+export function calculateAdjacentMines(
+    board: Board,
+    rows: number,
+    cols: number
+): Board {
     for (let row = 0; row < rows; row++) {
         for (let col = 0; col < cols; col++) {
             if (board[row][col].isMine) continue;
 
-            const neighbors = getNeighbors(row, col);
+            const neighbors = getNeighbors(row, col, rows, cols);
 
             board[row][col].adjacentMines = neighbors.filter(
                 ({ row: neighborRow, col: neighborCol }) =>
@@ -84,11 +117,15 @@ export function calculateAdjacentMines(board: Board): Board {
     return board;
 }
 
-export function createBoard(): Board {
-    const board = createEmptyBoard();
+export function createBoard(
+    difficulty: Difficulty = "easy"
+): Board {
+    const { rows, cols, mines } = difficulties[difficulty];
 
-    placeMines(board);
-    calculateAdjacentMines(board);
+    const board = createEmptyBoard(rows, cols);
+
+    placeMines(board, rows, cols, mines);
+    calculateAdjacentMines(board, rows, cols);
 
     return board;
 }
