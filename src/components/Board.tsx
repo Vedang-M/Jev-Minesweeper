@@ -9,7 +9,8 @@ import {
     placeMines,
     calculateAdjacentMines,
 } from "@/game/boards";
-import { findSafeMoves } from "@/game/solver";
+import { extractConstraints } from "@/game/constraints";
+import { solveConstraints } from "@/game/constraintSolver";
 import Cell from "./Cell";
 
 type BoardProps = {
@@ -162,14 +163,39 @@ export default function Board({ board: initialBoard }: BoardProps) {
     function suggestMove() {
         if (gameStatus !== "playing") return;
 
-        const safeMoves = findSafeMoves(board);
+        const constraints = extractConstraints(board);
 
-        if (safeMoves.length === 0) {
-            setSuggestion(null);
+        const result = solveConstraints(constraints);
+
+        if (result.safeCells.length > 0) {
+            const [row, col] = result.safeCells[0]
+                .split("-")
+                .map(Number);
+
+            setSuggestion({
+                row,
+                col,
+                reason: "Constraint analysis proves this cell is safe.",
+            });
+
             return;
         }
 
-        setSuggestion(safeMoves[0]);
+        if (result.mineCells.length > 0) {
+            const [row, col] = result.mineCells[0]
+                .split("-")
+                .map(Number);
+
+            setSuggestion({
+                row,
+                col,
+                reason: "Constraint analysis indicates this cell is a mine.",
+            });
+
+            return;
+        }
+
+        setSuggestion(null);
     }
 
     function revealCell(row: number, col: number) {
