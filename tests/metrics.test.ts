@@ -105,22 +105,28 @@ console.log("  ✓ Metric calculations: denominators, rates, percentiles, and co
 
 // Test cluster bootstrap estimator
 {
-    // 2 games: game 1 has 10/10 safe moves; game 2 has 0/1 safe moves
-    const game1Decs = Array.from({ length: 10 }, () => ({
+    interface PartialDecisionRecord {
+        isValid: boolean;
+        isSafe: boolean;
+        guaranteedSafeExisted: boolean;
+        matchedGuaranteedSafe: boolean;
+    }
+
+    const game1Decs: PartialDecisionRecord[] = Array.from({ length: 10 }, () => ({
         isValid: true,
         isSafe: true,
         guaranteedSafeExisted: true,
         matchedGuaranteedSafe: true,
-    } as any));
-    const game2Decs = [{
+    }));
+    const game2Decs: PartialDecisionRecord[] = [{
         isValid: true,
         isSafe: false,
         guaranteedSafeExisted: true,
         matchedGuaranteedSafe: false,
-    } as any];
+    }];
 
     const clusters = [game1Decs, game2Decs];
-    const metricFn = (sample: any[]) => {
+    const metricFn = (sample: PartialDecisionRecord[]) => {
         const v = sample.filter((d) => d.isValid).length;
         const s = sample.filter((d) => d.isValid && d.isSafe).length;
         return v > 0 ? s / v : 0;
@@ -129,7 +135,7 @@ console.log("  ✓ Metric calculations: denominators, rates, percentiles, and co
     // Resampling clusters with replacement
     const estimates: number[] = [];
     for (let b = 0; b < 100; b++) {
-        const sample: any[] = [];
+        const sample: PartialDecisionRecord[] = [];
         for (let i = 0; i < 2; i++) {
             const randIdx = Math.floor(Math.random() * 2);
             sample.push(...clusters[randIdx]);

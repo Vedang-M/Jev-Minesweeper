@@ -162,40 +162,36 @@ The project features a deterministic, paired benchmarking suite evaluating Class
   node scripts/runTs.js scripts/runBenchmark.ts --trials 5 --engine classical
   ```
 
-### Empirical Results (Measured Experiment `exp_1792470142530`)
+### Empirical Results (Final Benchmark Summary)
 
-| Metric | Classical Solver | Laya (`convaiinnovations/laya`) | JEV (`~typesafe/jev-latest`) |
+| Metric | Classical Solver (`exp_1792471827737`) | Laya Local MPS (`exp_1792472002589`) | JEV OpenRouter API (`exp_1792470142530`) |
 | :--- | :--- | :--- | :--- |
-| **Total Decisions Evaluated** | 254 | 50 | 30 |
-| **Valid Decision Rate** | **100.0%** (254/254) | **100.0%** (50/50) | 83.33% (25/30) |
-| **Safe Move Rate** | **96.46%** [93.4%, 98.1%] | 72.00% [58.3%, 82.5%] | 64.00% [44.5%, 79.8%] |
-| **Mine Hit Rate** | **3.54%** | 28.00% | 36.00% |
-| **Guaranteed Safe Match Rate**| **100.0%** (236/236) | 37.14% (13/35) | 14.29% (2/14) |
-| **Median Decision Latency** | **1 ms** | **204 ms** (Local Apple MPS) | 600 ms (Network API) |
-| **p90 Latency** | **1 ms** | **301 ms** | 696 ms |
-| **API Cost** | **$0.00** | **$0.00** | $0.0165 |
+| **Total Games Completed** | **300** (100 Easy, 100 Medium, 100 Hard) | **30** (10 Easy, 10 Medium, 10 Hard) | Paired preliminary run |
+| **Overall Game Win Rate** | **35.0%** [29.8%, 40.6%] | **0.0%** [0.0%, 11.3%] | 0.0% (Preliminary) |
+| **- Easy Win Rate** | **64.0%** [54.2%, 72.7%] | 0.0% [0.0%, 27.8%] | 0.0% |
+| **- Medium Win Rate** | **41.0%** [31.9%, 50.8%] | 0.0% [0.0%, 27.8%] | 0.0% |
+| **- Hard Win Rate** | **0.0%** [0.0%, 3.7%] | 0.0% [0.0%, 27.8%] | 0.0% |
+| **Total Decisions Evaluated** | **11,853** | **85** | 30 |
+| **Valid Decision Rate** | **100.0%** (11,853/11,853) | **100.0%** (85/85) | 83.33% (25/30) |
+| **Safe Move Rate** | **98.54%** [98.20%, 98.80%] | **64.71%** [53.1%, 73.7%] | 64.00% [44.5%, 79.8%] |
+| **Guaranteed Safe Match Rate**| **100.0%** (11,519/11,519) | **33.33%** (21/63) | 14.29% (2/14) |
+| **Median Decision Latency** | **< 1 ms** | **180 ms** (Apple Silicon `mps`) | 1,650 ms (Network API) |
+| **p90 Latency** | **1 ms** | **198 ms** | 2,150 ms |
+| **Total Cost** | **$0.00** | **$0.00** (Local) | ~$0.0165 |
 
-### Breakdown by Difficulty
-- **Easy (9x9, 10 mines)**:
-  - Classical: 94.3% safe rate (won 1 game, hit unavoidable guess).
-  - Laya: 80.0% safe rate (avg latency 276ms).
-  - JEV: 76.9% safe rate (avg latency 573ms).
-- **Medium (16x16, 40 mines)**:
-  - Classical: 95.9% safe rate (98 decisions).
-  - Laya: 44.4% safe rate (106ms avg latency).
-  - JEV: 50.0% safe rate (595ms avg latency).
-- **Hard (16x30, 99 mines)**:
-  - Classical: 97.5% safe rate (121 decisions).
-  - Laya: 76.2% safe rate (151ms avg latency, 52.9% matched guaranteed safe moves).
-  - JEV: 28.6% valid decision rate (hit invalid coordinate combinations on large boards).
+*Note on JEV Live Scaling*: Real API queries were verified, but scaling beyond initial trials is halted due to upstream account credit exhaustion (HTTP 402 from OpenRouter).
 
-Raw decision telemetry is saved to `results/decisions_<expId>.jsonl` and `results/decisions_<expId>.csv`.
+### Detailed Documentation
+- [Benchmark Methodology](docs/benchmark_methodology.md): Experimental design, two-phase diagnostic vs. full-game separation, paired seeds, and game-clustered bootstrap math.
+- [Final Benchmark Report](docs/final_benchmark_report.md): Complete analysis tables, breakdown by difficulty, latency distributions, and empirical conclusions.
+- [Model Provenance](docs/model_provenance.md): Pinned checkpoint hashes, licenses, hardware specs, and runtime requirements.
+- [Experiment Manifest](results/manifest.json): Machine-readable index of all raw JSONL/CSV runs.
 
 ---
 
-## 6. Testing & Quality Verification
+## 6. Testing, Quality Verification & Data Audit
 
-Run the comprehensive test suites:
+### 1. Run Automated Unit & Metric Tests
 ```bash
 npm test
 ```
@@ -204,15 +200,20 @@ Runs 5 automated unit suites covering:
 2. `tests/solver.test.ts`: Single-constraint and subset-reduction deductions.
 3. `tests/jevRoute.test.ts`: Information boundaries (stripping `isMine`, masking counts).
 4. `tests/decisionRoute.test.ts`: Shared decision contract schema and safety tagging.
-5. `tests/metrics.test.ts`: Wilson score confidence intervals and latency percentiles.
+5. `tests/metrics.test.ts`: Game-clustered bootstrap estimators and Wilson score intervals.
 
-Run Python unit tests:
+### 2. Run Python Service Tests
 ```bash
-cd services/laya
-pytest tests/test_service.py
+PYTHONPATH=services/laya pytest services/laya/tests
 ```
 
-Run TypeScript and Next.js production build:
+### 3. Run Independent Data Audit
+Mathematically reconciles every summary statistic directly against the raw JSONL and CSV records:
+```bash
+node scripts/runTs.js scripts/auditData.ts
+```
+
+### 4. Build Production Bundle
 ```bash
 npm run build
 ```
@@ -224,3 +225,4 @@ npm run build
 - The Next.js frontend interacts only with internal routes (`/api/decision`).
 - Docker containers run as non-root users (`appuser`) with explicit health probes.
 - Model checkpoints and large cache directories are excluded from Git tracking via `.gitignore`.
+

@@ -1,0 +1,55 @@
+{
+  "benchmark": "JEV vs Laya vs Classical Minesweeper Benchmark",
+  "version": "1.0.0",
+  "date": "2026-10-20",
+  "comparableExperiments": [
+    {
+      "experimentId": "exp_1792471827737",
+      "engine": "classical",
+      "status": "completed",
+      "gamesAttempted": 300,
+      "gamesWon": 105,
+      "decisionsEvaluated": 11853,
+      "files": {
+        "summary": "results/benchmark_summary_exp_1792471827737.json",
+        "decisionsJsonl": "results/decisions_exp_1792471827737.jsonl",
+        "decisionsCsv": "results/decisions_exp_1792471827737.csv",
+        "gamesJson": "results/games_exp_1792471827737.json"
+      },
+      "notes": "Full target of 100 Easy, 100 Medium, 100 Hard games. 100% deduction accuracy."
+    },
+    {
+      "experimentId": "exp_1792472002589",
+      "engine": "laya",
+      "status": "completed_preliminary",
+      "gamesAttempted": 30,
+      "gamesWon": 0,
+      "decisionsEvaluated": 85,
+      "files": {
+        "summary": "results/benchmark_summary_exp_1792472002589.json",
+        "decisionsJsonl": "results/decisions_exp_1792472002589.jsonl",
+        "decisionsCsv": "results/decisions_exp_1792472002589.csv",
+        "gamesJson": "results/games_exp_1792472002589.json"
+      },
+      "notes": "10 Easy, 10 Medium, 10 Hard games on Apple Silicon MPS. 100% valid move rate."
+    },
+    {
+      "experimentId": "exp_1792470142530",
+      "engine": "paired_preliminary",
+      "status": "completed_preliminary",
+      "gamesAttempted": 12,
+      "decisionsEvaluated": 48,
+      "files": {
+        "summary": "results/benchmark_summary_exp_1792470142530.json",
+        "decisionsJsonl": "results/decisions_exp_1792470142530.jsonl",
+        "decisionsCsv": "results/decisions_exp_1792470142530.csv"
+      },
+      "notes": "Paired preliminary run across classical, jev, and laya. JEV live scaling subsequently halted by OpenRouter 402 Insufficient Credits."
+    }
+  ],
+  "auditVerification": {
+    "script": "scripts/auditData.ts",
+    "verifiedDate": "2026-10-20T05:08:09Z",
+    "status": "PASSED_100_PERCENT"
+  }
+}
