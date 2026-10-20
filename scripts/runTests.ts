@@ -106,6 +106,7 @@ const suites = [
     "tests/board.test.ts",
     "tests/solver.test.ts",
     "tests/jevRoute.test.ts",
+    "tests/decisionRoute.test.ts",
     "tests/metrics.test.ts",
 ];
 

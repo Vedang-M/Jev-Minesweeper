@@ -1,0 +1,302 @@
+[
+  {
+    "gameId": "exp_1792472002589_game_easy_laya_s49",
+    "seed": 49,
+    "difficulty": "easy",
+    "method": "laya",
+    "won": false,
+    "movesCount": 6,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_easy_laya_s149",
+    "seed": 149,
+    "difficulty": "easy",
+    "method": "laya",
+    "won": false,
+    "movesCount": 8,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_easy_laya_s249",
+    "seed": 249,
+    "difficulty": "easy",
+    "method": "laya",
+    "won": false,
+    "movesCount": 3,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_easy_laya_s349",
+    "seed": 349,
+    "difficulty": "easy",
+    "method": "laya",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_easy_laya_s449",
+    "seed": 449,
+    "difficulty": "easy",
+    "method": "laya",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_easy_laya_s549",
+    "seed": 549,
+    "difficulty": "easy",
+    "method": "laya",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_easy_laya_s649",
+    "seed": 649,
+    "difficulty": "easy",
+    "method": "laya",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_easy_laya_s749",
+    "seed": 749,
+    "difficulty": "easy",
+    "method": "laya",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_easy_laya_s849",
+    "seed": 849,
+    "difficulty": "easy",
+    "method": "laya",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_easy_laya_s949",
+    "seed": 949,
+    "difficulty": "easy",
+    "method": "laya",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_medium_laya_s49",
+    "seed": 49,
+    "difficulty": "medium",
+    "method": "laya",
+    "won": false,
+    "movesCount": 3,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_medium_laya_s149",
+    "seed": 149,
+    "difficulty": "medium",
+    "method": "laya",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_medium_laya_s249",
+    "seed": 249,
+    "difficulty": "medium",
+    "method": "laya",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_medium_laya_s349",
+    "seed": 349,
+    "difficulty": "medium",
+    "method": "laya",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_medium_laya_s449",
+    "seed": 449,
+    "difficulty": "medium",
+    "method": "laya",
+    "won": false,
+    "movesCount": 4,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_medium_laya_s549",
+    "seed": 549,
+    "difficulty": "medium",
+    "method": "laya",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_medium_laya_s649",
+    "seed": 649,
+    "difficulty": "medium",
+    "method": "laya",
+    "won": false,
+    "movesCount": 5,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_medium_laya_s749",
+    "seed": 749,
+    "difficulty": "medium",
+    "method": "laya",
+    "won": false,
+    "movesCount": 3,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_medium_laya_s849",
+    "seed": 849,
+    "difficulty": "medium",
+    "method": "laya",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_medium_laya_s949",
+    "seed": 949,
+    "difficulty": "medium",
+    "method": "laya",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_hard_laya_s49",
+    "seed": 49,
+    "difficulty": "hard",
+    "method": "laya",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_hard_laya_s149",
+    "seed": 149,
+    "difficulty": "hard",
+    "method": "laya",
+    "won": false,
+    "movesCount": 3,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_hard_laya_s249",
+    "seed": 249,
+    "difficulty": "hard",
+    "method": "laya",
+    "won": false,
+    "movesCount": 13,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_hard_laya_s349",
+    "seed": 349,
+    "difficulty": "hard",
+    "method": "laya",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_hard_laya_s449",
+    "seed": 449,
+    "difficulty": "hard",
+    "method": "laya",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_hard_laya_s549",
+    "seed": 549,
+    "difficulty": "hard",
+    "method": "laya",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_hard_laya_s649",
+    "seed": 649,
+    "difficulty": "hard",
+    "method": "laya",
+    "won": false,
+    "movesCount": 3,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_hard_laya_s749",
+    "seed": 749,
+    "difficulty": "hard",
+    "method": "laya",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_hard_laya_s849",
+    "seed": 849,
+    "difficulty": "hard",
+    "method": "laya",
+    "won": false,
+    "movesCount": 3,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792472002589_game_hard_laya_s949",
+    "seed": 949,
+    "difficulty": "hard",
+    "method": "laya",
+    "won": false,
+    "movesCount": 3,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "gameId": "exp_1792471683459_game_easy_classical_s49",
+    "seed": 49,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 23,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471683459_game_easy_jev_s49",
+    "seed": 49,
+    "difficulty": "easy",
+    "method": "jev",
+    "won": false,
+    "movesCount": 0,
+    "terminalOutcome": "invalid",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471683459_game_easy_laya_s49",
+    "seed": 49,
+    "difficulty": "easy",
+    "method": "laya",
+    "won": false,
+    "movesCount": 6,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471683459_game_medium_classical_s49",
+    "seed": 49,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 90,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471683459_game_medium_jev_s49",
+    "seed": 49,
+    "difficulty": "medium",
+    "method": "jev",
+    "won": false,
+    "movesCount": 0,
+    "terminalOutcome": "invalid",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471683459_game_medium_laya_s49",
+    "seed": 49,
+    "difficulty": "medium",
+    "method": "laya",
+    "won": false,
+    "movesCount": 3,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471683459_game_hard_classical_s49",
+    "seed": 49,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471683459_game_hard_jev_s49",
+    "seed": 49,
+    "difficulty": "hard",
+    "method": "jev",
+    "won": false,
+    "movesCount": 0,
+    "terminalOutcome": "invalid",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471683459_game_hard_laya_s49",
+    "seed": 49,
+    "difficulty": "hard",
+    "method": "laya",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  }
+]

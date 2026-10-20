@@ -28,24 +28,29 @@ export default function Board({ board: initialBoard }: BoardProps) {
     const [board, setBoard] = useState(initialBoard);
     const [gameStatus, setGameStatus] = useState<GameStatus>("playing");
 
+    const [engine, setEngine] = useState<"jev" | "laya" | "classical">("jev");
     const [time, setTime] = useState(0);
 
-    const [suggestion, setSuggestion] = useState<{
+    const [classicalSuggestion, setClassicalSuggestion] = useState<{
         row: number;
         col: number;
         reason: string;
+        isGuaranteedSafe: boolean;
     } | null>(null);
 
-    const [jevSuggestion, setJevSuggestion] = useState<{
+    const [aiSuggestion, setAiSuggestion] = useState<{
+        engine: "jev" | "laya";
         row: number;
         col: number;
         confidence: number | null;
+        isGuaranteedSafe: boolean;
+        latencyMs: number;
     } | null>(null);
 
-    const [jevExcludedCells, setJevExcludedCells] = useState<string[]>([]);
-    const [jevStatusMessage, setJevStatusMessage] = useState<string | null>(null);
+    const [excludedCells, setExcludedCells] = useState<string[]>([]);
+    const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
-    const [isAskingJev, setIsAskingJev] = useState(false);
+    const [isRequesting, setIsRequesting] = useState(false);
 
     const [difficulty, setDifficulty] = useState<Difficulty>("easy");
 
@@ -57,18 +62,20 @@ export default function Board({ board: initialBoard }: BoardProps) {
 
     const remainingMines = Math.max(0, currentMines - flaggedCount);
 
-    function resetJevHistory() {
-        setJevExcludedCells([]);
-        setJevSuggestion(null);
-        setJevStatusMessage(null);
+    function resetHistory() {
+        setExcludedCells([]);
+        setAiSuggestion(null);
+        setClassicalSuggestion(null);
+        setStatusMessage(null);
     }
 
     function clearSuggestionsOnBoardChange() {
-        setSuggestion(null);
-        setJevSuggestion(null);
-        setJevStatusMessage(null);
-        setJevExcludedCells([]);
+        setClassicalSuggestion(null);
+        setAiSuggestion(null);
+        setStatusMessage(null);
+        setExcludedCells([]);
     }
+
 
     useEffect(() => {
         if (gameStatus !== "playing") return;
@@ -153,16 +160,14 @@ export default function Board({ board: initialBoard }: BoardProps) {
     function changeDifficulty(newDifficulty: Difficulty) {
         setDifficulty(newDifficulty);
         setBoard(createBoard(newDifficulty));
-        resetJevHistory();
-        setSuggestion(null);
+        resetHistory();
         setGameStatus("playing");
         setTime(0);
     }
 
     function resetGame() {
         setBoard(createBoard(difficulty));
-        resetJevHistory();
-        setSuggestion(null);
+        resetHistory();
         setGameStatus("playing");
         setTime(0);
     }
@@ -197,10 +202,11 @@ export default function Board({ board: initialBoard }: BoardProps) {
         const result = solveConstraints(constraints);
 
         if (result.hasContradiction) {
-            setSuggestion({
+            setClassicalSuggestion({
                 row: -1,
                 col: -1,
                 reason: "Contradiction detected in board flags/constraints.",
+                isGuaranteedSafe: false,
             });
             return;
         }
@@ -210,10 +216,11 @@ export default function Board({ board: initialBoard }: BoardProps) {
                 .split("-")
                 .map(Number);
 
-            setSuggestion({
+            setClassicalSuggestion({
                 row,
                 col,
                 reason: "This cell is proven safe by constraint logic.",
+                isGuaranteedSafe: true,
             });
 
             return;
@@ -224,19 +231,21 @@ export default function Board({ board: initialBoard }: BoardProps) {
                 .split("-")
                 .map(Number);
 
-            setSuggestion({
+            setClassicalSuggestion({
                 row,
                 col,
                 reason: "This cell is proven to be a mine.",
+                isGuaranteedSafe: false,
             });
 
             return;
         }
 
-        setSuggestion({
+        setClassicalSuggestion({
             row: -1,
             col: -1,
             reason: "No guaranteed safe move found. A deduction or guess is required.",
+            isGuaranteedSafe: false,
         });
     }
 
@@ -316,69 +325,73 @@ export default function Board({ board: initialBoard }: BoardProps) {
         }
     }
 
-    async function askJev() {
-        if (gameStatus !== "playing" || isAskingJev) return;
+    async function askDecision(engineToUse?: "jev" | "laya") {
+        const targetEngine = engineToUse || (engine === "classical" ? "jev" : engine);
+        if (gameStatus !== "playing" || isRequesting) return;
 
-        setIsAskingJev(true);
-        setJevStatusMessage(null);
+        setIsRequesting(true);
+        setStatusMessage(null);
         try {
-            const response = await fetch("/api/jev", {
+            const response = await fetch("/api/decision", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
+                    engine: targetEngine,
+                    difficulty,
                     state: board,
-                    excludeCells: jevExcludedCells,
+                    excludeCells: excludedCells,
                 }),
             });
 
             const result = await response.json();
 
-            if (result.error === "NO_NEW_MOVE") {
-                setJevStatusMessage("No new JEV move available for this board.");
+            if (result.status === "no_candidates") {
+                setStatusMessage(`No available candidate moves for ${targetEngine.toUpperCase()}.`);
                 return;
             }
 
-            if (!response.ok || result.error) {
-                setJevSuggestion(null);
-                setJevStatusMessage(result.message || result.details || "JEV request failed.");
+            if (!response.ok || result.status === "error") {
+                setAiSuggestion(null);
+                setStatusMessage(result.error || `${targetEngine.toUpperCase()} request failed.`);
                 return;
             }
 
-            const moveAnswer = result.answers?.move;
-            const choice = moveAnswer?.choice;
-            const confidence = typeof moveAnswer?.confidence === "number" ? moveAnswer.confidence : null;
-            const isValid = moveAnswer?.valid;
+            const move = result.move;
+            const choice = move?.choice;
+            const isValid = move?.valid;
 
-            // If JEV returns an invalid move, or returns a cell that is already in excludeCells
-            if (!choice || isValid === false || jevExcludedCells.includes(choice)) {
-                setJevSuggestion(null);
-                setJevStatusMessage("JEV returned an invalid or repeated move.");
+            if (!choice || isValid === false || excludedCells.includes(choice)) {
+                setAiSuggestion(null);
+                setStatusMessage(`${targetEngine.toUpperCase()} returned an invalid or repeated move.`);
                 return;
             }
 
             const [row, col] = choice.split("-").map(Number);
 
-            // Visually highlight only the current suggestion
-            setJevSuggestion({
+            setAiSuggestion({
+                engine: targetEngine,
                 row,
                 col,
-                confidence,
+                confidence: typeof result.confidence === "number" ? result.confidence : null,
+                isGuaranteedSafe: Boolean(move?.isGuaranteedSafe),
+                latencyMs: typeof result.latencyMs === "number" ? result.latencyMs : 0,
             });
 
-            // Immediately add that move to the frontend's JEV-excluded set
-            setJevExcludedCells((prev) =>
+            setExcludedCells((prev) =>
                 prev.includes(choice) ? prev : [...prev, choice]
             );
-        } catch (error) {
-            console.error("JEV request failed:", error);
-            setJevSuggestion(null);
-            setJevStatusMessage("JEV connection error. Application remains playable.");
+        } catch (error: unknown) {
+            console.error("Decision request failed:", error);
+            setAiSuggestion(null);
+            setStatusMessage(`Failed to reach ${targetEngine.toUpperCase()} service.`);
         } finally {
-            setIsAskingJev(false);
+            setIsRequesting(false);
         }
+
     }
+
 
 
     const difficultiesList: Difficulty[] = ["easy", "medium", "hard"];
@@ -386,24 +399,52 @@ export default function Board({ board: initialBoard }: BoardProps) {
     return (
         <div className="flex flex-col items-center w-full max-w-full gap-5">
             {/* 3. Difficulty Selector - Segmented Control */}
-            <div className="inline-flex items-center rounded-lg border border-neutral-200 bg-neutral-100 p-0.5 text-xs sm:text-sm font-medium">
-                {difficultiesList.map((d) => {
-                    const isActive = difficulty === d;
-                    return (
-                        <button
-                            key={d}
-                            type="button"
-                            onClick={() => changeDifficulty(d)}
-                            className={`rounded-md px-3.5 py-1.5 capitalize transition-all duration-150 focus:outline-none ${
-                                isActive
-                                    ? "bg-neutral-900 text-white font-medium shadow-sm"
-                                    : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60"
-                            }`}
-                        >
-                            {d}
-                        </button>
-                    );
-                })}
+            <div className="flex flex-col sm:flex-row items-center gap-2.5">
+                {/* Difficulty Selector */}
+                <div className="inline-flex items-center rounded-lg border border-neutral-200 bg-neutral-100 p-0.5 text-xs sm:text-sm font-medium">
+                    {difficultiesList.map((d) => {
+                        const isActive = difficulty === d;
+                        return (
+                            <button
+                                key={d}
+                                type="button"
+                                onClick={() => changeDifficulty(d)}
+                                className={`rounded-md px-3.5 py-1.5 capitalize transition-all duration-150 focus:outline-none ${
+                                    isActive
+                                        ? "bg-neutral-900 text-white font-medium shadow-sm"
+                                        : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60"
+                                }`}
+                            >
+                                {d}
+                            </button>
+                        );
+                    })}
+                </div>
+
+                {/* Engine Selector */}
+                <div className="inline-flex items-center rounded-lg border border-neutral-200 bg-neutral-100 p-0.5 text-xs sm:text-sm font-medium">
+                    {(["jev", "laya"] as const).map((eng) => {
+                        const isActive = engine === eng;
+                        return (
+                            <button
+                                key={eng}
+                                type="button"
+                                onClick={() => {
+                                    setEngine(eng);
+                                    setAiSuggestion(null);
+                                    setStatusMessage(null);
+                                }}
+                                className={`rounded-md px-3 py-1.5 uppercase tracking-wide text-xs transition-all duration-150 focus:outline-none ${
+                                    isActive
+                                        ? "bg-neutral-900 text-white font-semibold shadow-sm"
+                                        : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60"
+                                }`}
+                            >
+                                {eng}
+                            </button>
+                        );
+                    })}
+                </div>
             </div>
 
             {/* 4. Game HUD */}
@@ -433,8 +474,8 @@ export default function Board({ board: initialBoard }: BoardProps) {
                             key={`${cell.row}-${cell.col}`}
                             cell={cell}
                             isSuggested={
-                                (jevSuggestion?.row === cell.row && jevSuggestion?.col === cell.col) ||
-                                (suggestion?.row === cell.row && suggestion?.col === cell.col)
+                                (aiSuggestion?.row === cell.row && aiSuggestion?.col === cell.col) ||
+                                (classicalSuggestion?.row === cell.row && classicalSuggestion?.col === cell.col)
                             }
                             onClick={() => revealCell(cell.row, cell.col)}
                             onRightClick={() => toggleFlag(cell.row, cell.col)}
@@ -456,79 +497,97 @@ export default function Board({ board: initialBoard }: BoardProps) {
 
             {/* 8. Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 w-full max-w-xs mt-1">
-                {/* Primary: Ask JEV */}
+                {/* Primary: Ask Selected Engine */}
                 <button
                     type="button"
-                    onClick={askJev}
-                    disabled={gameStatus !== "playing" || isAskingJev}
+                    onClick={() => askDecision()}
+                    disabled={gameStatus !== "playing" || isRequesting}
                     className="w-full sm:flex-1 h-9 px-4 rounded-md bg-neutral-900 text-white text-xs sm:text-sm font-medium hover:bg-neutral-800 active:bg-neutral-950 disabled:opacity-50 disabled:pointer-events-none transition-colors focus:outline-none"
                 >
-                    {isAskingJev ? "Thinking..." : "Ask JEV"}
+                    {isRequesting ? "Thinking..." : `Ask ${engine.toUpperCase()}`}
                 </button>
 
-                {/* Secondary: Suggest Move */}
+                {/* Secondary: Classical Suggest Move */}
                 <button
                     type="button"
                     onClick={suggestMove}
                     disabled={gameStatus !== "playing"}
                     className="w-full sm:flex-1 h-9 px-4 rounded-md bg-white border border-neutral-300 text-neutral-800 text-xs sm:text-sm font-medium hover:bg-neutral-50 active:bg-neutral-100 disabled:opacity-50 disabled:pointer-events-none transition-colors focus:outline-none"
                 >
-                    Suggest Move
+                    Solve Logic
                 </button>
             </div>
 
-            {/* 9. JEV / Solver Result Panel */}
+            {/* 9. AI / Solver Result Panel */}
             <div className="w-full max-w-xs">
                 <div className="rounded-md border border-neutral-200 bg-white p-3 text-neutral-900 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-                    <div className="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2">
-                        JEV
+                    <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">
+                            {engine.toUpperCase()} Recommendation
+                        </span>
+                        {aiSuggestion?.latencyMs ? (
+                            <span className="text-[11px] text-neutral-400 font-mono">
+                                {aiSuggestion.latencyMs}ms
+                            </span>
+                        ) : null}
                     </div>
-                    {jevStatusMessage ? (
+
+                    {statusMessage ? (
                         <div className="text-xs sm:text-sm text-neutral-600">
-                            {jevStatusMessage}
+                            {statusMessage}
                         </div>
-                    ) : jevSuggestion ? (
+                    ) : aiSuggestion ? (
                         <div className="space-y-1.5 text-xs sm:text-sm">
                             <div className="flex items-center justify-between">
                                 <span className="text-neutral-500">Suggested move</span>
                                 <span className="font-semibold text-neutral-900">
-                                    {toCoord(jevSuggestion.row, jevSuggestion.col)}
+                                    {toCoord(aiSuggestion.row, aiSuggestion.col)}
                                 </span>
                             </div>
                             <div className="flex items-center justify-between">
                                 <span className="text-neutral-500">Confidence</span>
                                 <span className="font-semibold text-neutral-900">
-                                    {jevSuggestion.confidence !== null
-                                        ? `${Math.round(jevSuggestion.confidence <= 1 ? jevSuggestion.confidence * 100 : jevSuggestion.confidence)}%`
+                                    {aiSuggestion.confidence !== null
+                                        ? `${Math.round(aiSuggestion.confidence <= 1 ? aiSuggestion.confidence * 100 : aiSuggestion.confidence)}%`
                                         : "Not provided"}
+                                </span>
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <span className="text-neutral-500">Constraint verification</span>
+                                <span className={`text-[11px] font-semibold px-1.5 py-0.5 rounded ${
+                                    aiSuggestion.isGuaranteedSafe
+                                        ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                                        : "bg-amber-50 text-amber-700 border border-amber-200"
+                                }`}>
+                                    {aiSuggestion.isGuaranteedSafe ? "Guaranteed Safe" : "Probabilistic / Unguaranteed"}
                                 </span>
                             </div>
                         </div>
                     ) : (
                         <div className="text-xs sm:text-sm text-neutral-500">
-                            JEV is ready
+                            {engine.toUpperCase()} is ready
                         </div>
                     )}
                 </div>
 
                 {/* Classical Suggestion Info (if present) */}
-                {suggestion && suggestion.reason && (
+                {classicalSuggestion && classicalSuggestion.reason && (
                     <div className="mt-2 px-3 py-2 rounded-md border border-neutral-200 bg-neutral-50 text-xs text-neutral-700">
-                        {suggestion.row >= 0 ? (
+                        {classicalSuggestion.row >= 0 ? (
                             <p>
                                 <span className="font-semibold text-neutral-900">
-                                    {toCoord(suggestion.row, suggestion.col)}:
+                                    {toCoord(classicalSuggestion.row, classicalSuggestion.col)}:
                                 </span>{" "}
-                                {suggestion.reason}
+                                {classicalSuggestion.reason}
                             </p>
                         ) : (
-                            <p className="text-neutral-500">{suggestion.reason}</p>
+                            <p className="text-neutral-500">{classicalSuggestion.reason}</p>
                         )}
                     </div>
                 )}
             </div>
 
-            {/* Tertiary Action: New Game (Understated below JEV panel) */}
+            {/* Tertiary Action: New Game (Understated below AI panel) */}
             <button
                 type="button"
                 onClick={resetGame}

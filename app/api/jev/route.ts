@@ -77,60 +77,54 @@ export async function POST(request: Request) {
             }))
         );
 
-        let questions: Record<string, unknown>;
-        let decisionMode: "direct" | "row_col";
+        let targetCandidates = availableCells;
+        let decisionMode: "direct" | "staged_boundary" = "direct";
 
-        if (availableCells.length <= MAX_CHOICES_LIMIT) {
-            // Direct candidate selection avoids row/col cross-product invalid coordinate problems!
-            decisionMode = "direct";
-            questions = {
-                cell: {
-                    type: "choice",
-                    instructions:
-                        "Choose the single safest unrevealed cell coordinate to reveal on this Minesweeper board.",
-                    criteria: Object.fromEntries(
-                        availableCells.map((cell) => [
-                            cell.key,
-                            `Select cell at row ${cell.row}, column ${cell.col}.`,
-                        ])
-                    ),
-                },
-            };
-        } else {
-            // Fallback for large boards (>255 candidates, e.g. pristine Hard board with 480 cells)
-            decisionMode = "row_col";
-            const rowsWithMoves = [
-                ...new Set(availableCells.map((cell) => cell.row)),
-            ];
-            const colsWithMoves = [
-                ...new Set(availableCells.map((cell) => cell.col)),
-            ];
+        if (availableCells.length > MAX_CHOICES_LIMIT) {
+            decisionMode = "staged_boundary";
+            const frontierCandidates: { row: number; col: number; key: string }[] = [];
 
-            questions = {
-                row: {
-                    type: "choice",
-                    instructions:
-                        "Choose the row containing the safest unrevealed cell according to the visible Minesweeper board.",
-                    criteria: Object.fromEntries(
-                        rowsWithMoves.map((row) => [
-                            String(row),
-                            `Choose row ${row}.`,
-                        ])
-                    ),
-                },
-                col: {
-                    type: "choice",
-                    instructions:
-                        "Choose the column containing the safest unrevealed cell according to the visible Minesweeper board.",
-                    criteria: Object.fromEntries(
-                        colsWithMoves.map((col) => [
-                            String(col),
-                            `Choose column ${col}.`,
-                        ])
-                    ),
-                },
-            };
+            for (const cell of availableCells) {
+                let isFrontier = false;
+                for (let dr = -1; dr <= 1; dr++) {
+                    for (let dc = -1; dc <= 1; dc++) {
+                        if (dr === 0 && dc === 0) continue;
+                        const nr = cell.row + dr;
+                        const nc = cell.col + dc;
+                        if (nr >= 0 && nr < rows && nc >= 0 && nc < cols) {
+                            if (board[nr][nc].isRevealed && (board[nr][nc].adjacentMines || 0) > 0) {
+                                isFrontier = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (isFrontier) break;
+                }
+                if (isFrontier) {
+                    frontierCandidates.push(cell);
+                }
+            }
+
+            if (frontierCandidates.length > 0) {
+                targetCandidates = frontierCandidates.slice(0, MAX_CHOICES_LIMIT);
+            } else {
+                targetCandidates = availableCells.slice(0, MAX_CHOICES_LIMIT);
+            }
         }
+
+        const questions: Record<string, unknown> = {
+            cell: {
+                type: "choice",
+                instructions:
+                    "Choose the single safest unrevealed cell coordinate to reveal on this Minesweeper board.",
+                criteria: Object.fromEntries(
+                    targetCandidates.map((cell) => [
+                        cell.key,
+                        `Select cell at row ${cell.row}, column ${cell.col}.`,
+                    ])
+                ),
+            },
+        };
 
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 15000);
@@ -176,38 +170,12 @@ export async function POST(request: Request) {
         let selectedKey: string | null = null;
         let confidence: number | null = null;
 
-        if (decisionMode === "direct") {
-            const rawChoice = data.answers?.cell?.choice;
-            if (typeof rawChoice === "string") {
-                selectedKey = rawChoice;
-            }
-            if (typeof data.answers?.cell?.confidence === "number") {
-                confidence = data.answers.cell.confidence;
-            }
-        } else {
-            const selectedRow = Number(data.answers?.row?.choice);
-            const selectedCol = Number(data.answers?.col?.choice);
-
-            if (Number.isInteger(selectedRow) && Number.isInteger(selectedCol)) {
-                selectedKey = `${selectedRow}-${selectedCol}`;
-            }
-
-            const rowConf =
-                typeof data.answers?.row?.confidence === "number"
-                    ? data.answers.row.confidence
-                    : null;
-            const colConf =
-                typeof data.answers?.col?.confidence === "number"
-                    ? data.answers.col.confidence
-                    : null;
-
-            if (rowConf !== null && colConf !== null) {
-                confidence = rowConf * colConf;
-            } else if (rowConf !== null) {
-                confidence = rowConf;
-            } else if (colConf !== null) {
-                confidence = colConf;
-            }
+        const rawChoice = data.answers?.cell?.choice;
+        if (typeof rawChoice === "string") {
+            selectedKey = rawChoice;
+        }
+        if (typeof data.answers?.cell?.confidence === "number") {
+            confidence = data.answers.cell.confidence;
         }
 
         /*

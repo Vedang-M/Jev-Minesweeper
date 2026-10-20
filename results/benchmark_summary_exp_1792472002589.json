@@ -1,0 +1,205 @@
+{
+  "experimentId": "exp_1792472002589",
+  "timestamp": "2026-10-20T04:53:42.784Z",
+  "trialsPerDifficulty": 10,
+  "enginesEvaluated": {
+    "classical": false,
+    "jev": false,
+    "laya": true
+  },
+  "methodologyNote": "Game-level win rates computed on independent complete games with Wilson score 95% CIs. Decision-level safe rates and guaranteed-safe match rates use game-clustered bootstrap resampling (1,000 resamples) to correct for intra-game correlation. Guaranteed-safe selection is computed strictly when a logically proven safe move existed.",
+  "overall": {
+    "classical": null,
+    "jev": null,
+    "laya": {
+      "gameLevel": {
+        "totalGames": 30,
+        "wonGames": 0,
+        "lostGames": 30,
+        "invalidTerminations": 0,
+        "winRate": 0,
+        "winRateCi95": [
+          0,
+          0.1135
+        ],
+        "avgMovesPerGame": 2.8
+      },
+      "decisionLevel": {
+        "totalDecisions": 85,
+        "validDecisions": 85,
+        "validRate": 1,
+        "safeDecisions": 55,
+        "safeRate": 0.6471,
+        "safeRateClusterBootstrapCi95": [
+          0.5313,
+          0.7368
+        ],
+        "mineHits": 30,
+        "mineHitRate": 0.3529,
+        "guaranteedSafeOpportunities": 63,
+        "matchedGuaranteedSafe": 21,
+        "matchGuaranteedRate": 0.3333,
+        "matchGuaranteedClusterBootstrapCi95": [
+          0.1778,
+          0.439
+        ],
+        "avgLatencyMs": 174,
+        "medianLatencyMs": 201,
+        "p90LatencyMs": 290,
+        "totalCostUsd": 0
+      },
+      "diagnosticSnapshot": {
+        "totalSnapshots": 30,
+        "validRate": 1,
+        "safeRate": 0.5333,
+        "matchGuaranteedRate": 0.1053
+      }
+    }
+  },
+  "byDifficulty": {
+    "easy": {
+      "classical": null,
+      "jev": null,
+      "laya": {
+        "gameLevel": {
+          "totalGames": 10,
+          "wonGames": 0,
+          "lostGames": 10,
+          "invalidTerminations": 0,
+          "winRate": 0,
+          "winRateCi95": [
+            0,
+            0.2775
+          ],
+          "avgMovesPerGame": 2.9
+        },
+        "decisionLevel": {
+          "totalDecisions": 29,
+          "validDecisions": 29,
+          "validRate": 1,
+          "safeDecisions": 19,
+          "safeRate": 0.6552,
+          "safeRateClusterBootstrapCi95": [
+            0.4444,
+            0.7727
+          ],
+          "mineHits": 10,
+          "mineHitRate": 0.3448,
+          "guaranteedSafeOpportunities": 24,
+          "matchedGuaranteedSafe": 4,
+          "matchGuaranteedRate": 0.1667,
+          "matchGuaranteedClusterBootstrapCi95": [
+            0,
+            0.2973
+          ],
+          "avgLatencyMs": 242,
+          "medianLatencyMs": 217,
+          "p90LatencyMs": 304,
+          "totalCostUsd": 0
+        },
+        "diagnosticSnapshot": {
+          "totalSnapshots": 10,
+          "validRate": 1,
+          "safeRate": 0.8,
+          "matchGuaranteedRate": 0
+        }
+      }
+    },
+    "medium": {
+      "classical": null,
+      "jev": null,
+      "laya": {
+        "gameLevel": {
+          "totalGames": 10,
+          "wonGames": 0,
+          "lostGames": 10,
+          "invalidTerminations": 0,
+          "winRate": 0,
+          "winRateCi95": [
+            0,
+            0.2775
+          ],
+          "avgMovesPerGame": 2.4
+        },
+        "decisionLevel": {
+          "totalDecisions": 24,
+          "validDecisions": 24,
+          "validRate": 1,
+          "safeDecisions": 14,
+          "safeRate": 0.5833,
+          "safeRateClusterBootstrapCi95": [
+            0.4118,
+            0.6875
+          ],
+          "mineHits": 10,
+          "mineHitRate": 0.4167,
+          "guaranteedSafeOpportunities": 16,
+          "matchedGuaranteedSafe": 5,
+          "matchGuaranteedRate": 0.3125,
+          "matchGuaranteedClusterBootstrapCi95": [
+            0,
+            0.4762
+          ],
+          "avgLatencyMs": 151,
+          "medianLatencyMs": 121,
+          "p90LatencyMs": 247,
+          "totalCostUsd": 0
+        },
+        "diagnosticSnapshot": {
+          "totalSnapshots": 10,
+          "validRate": 1,
+          "safeRate": 0.4,
+          "matchGuaranteedRate": 0.25
+        }
+      }
+    },
+    "hard": {
+      "classical": null,
+      "jev": null,
+      "laya": {
+        "gameLevel": {
+          "totalGames": 10,
+          "wonGames": 0,
+          "lostGames": 10,
+          "invalidTerminations": 0,
+          "winRate": 0,
+          "winRateCi95": [
+            0,
+            0.2775
+          ],
+          "avgMovesPerGame": 3.2
+        },
+        "decisionLevel": {
+          "totalDecisions": 32,
+          "validDecisions": 32,
+          "validRate": 1,
+          "safeDecisions": 22,
+          "safeRate": 0.6875,
+          "safeRateClusterBootstrapCi95": [
+            0.4118,
+            0.8182
+          ],
+          "mineHits": 10,
+          "mineHitRate": 0.3125,
+          "guaranteedSafeOpportunities": 23,
+          "matchedGuaranteedSafe": 12,
+          "matchGuaranteedRate": 0.5217,
+          "matchGuaranteedClusterBootstrapCi95": [
+            0.3,
+            0.5833
+          ],
+          "avgLatencyMs": 131,
+          "medianLatencyMs": 132,
+          "p90LatencyMs": 224,
+          "totalCostUsd": 0
+        },
+        "diagnosticSnapshot": {
+          "totalSnapshots": 10,
+          "validRate": 1,
+          "safeRate": 0.4,
+          "matchGuaranteedRate": 0.1429
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,3002 @@
+[
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s49",
+    "seed": 49,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 23,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s149",
+    "seed": 149,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s249",
+    "seed": 249,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 8,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s349",
+    "seed": 349,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s449",
+    "seed": 449,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 28,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s549",
+    "seed": 549,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 21,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s649",
+    "seed": 649,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s749",
+    "seed": 749,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 14,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s849",
+    "seed": 849,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 41,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s949",
+    "seed": 949,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 22,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s1049",
+    "seed": 1049,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 25,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s1149",
+    "seed": 1149,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 15,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s1249",
+    "seed": 1249,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 22,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s1349",
+    "seed": 1349,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 22,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s1449",
+    "seed": 1449,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 22,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s1549",
+    "seed": 1549,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s1649",
+    "seed": 1649,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s1749",
+    "seed": 1749,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 17,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s1849",
+    "seed": 1849,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s1949",
+    "seed": 1949,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s2049",
+    "seed": 2049,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s2149",
+    "seed": 2149,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 23,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s2249",
+    "seed": 2249,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s2349",
+    "seed": 2349,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 14,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s2449",
+    "seed": 2449,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s2549",
+    "seed": 2549,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 14,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s2649",
+    "seed": 2649,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 16,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s2749",
+    "seed": 2749,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 15,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s2849",
+    "seed": 2849,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 14,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s2949",
+    "seed": 2949,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 18,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s3049",
+    "seed": 3049,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 14,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s3149",
+    "seed": 3149,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 17,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s3249",
+    "seed": 3249,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 24,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s3349",
+    "seed": 3349,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 21,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s3449",
+    "seed": 3449,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 25,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s3549",
+    "seed": 3549,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 23,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s3649",
+    "seed": 3649,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 5,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s3749",
+    "seed": 3749,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 30,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s3849",
+    "seed": 3849,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 21,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s3949",
+    "seed": 3949,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 8,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s4049",
+    "seed": 4049,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 18,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s4149",
+    "seed": 4149,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 21,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s4249",
+    "seed": 4249,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 25,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s4349",
+    "seed": 4349,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s4449",
+    "seed": 4449,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s4549",
+    "seed": 4549,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 19,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s4649",
+    "seed": 4649,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s4749",
+    "seed": 4749,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 15,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s4849",
+    "seed": 4849,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 17,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s4949",
+    "seed": 4949,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 35,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s5049",
+    "seed": 5049,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 27,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s5149",
+    "seed": 5149,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 21,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s5249",
+    "seed": 5249,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 17,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s5349",
+    "seed": 5349,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s5449",
+    "seed": 5449,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s5549",
+    "seed": 5549,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s5649",
+    "seed": 5649,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s5749",
+    "seed": 5749,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 18,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s5849",
+    "seed": 5849,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 26,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s5949",
+    "seed": 5949,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 6,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s6049",
+    "seed": 6049,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 22,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s6149",
+    "seed": 6149,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 10,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s6249",
+    "seed": 6249,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s6349",
+    "seed": 6349,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s6449",
+    "seed": 6449,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 12,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s6549",
+    "seed": 6549,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s6649",
+    "seed": 6649,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 17,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s6749",
+    "seed": 6749,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 17,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s6849",
+    "seed": 6849,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s6949",
+    "seed": 6949,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 22,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s7049",
+    "seed": 7049,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 28,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s7149",
+    "seed": 7149,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 15,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s7249",
+    "seed": 7249,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 18,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s7349",
+    "seed": 7349,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 21,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s7449",
+    "seed": 7449,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 16,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s7549",
+    "seed": 7549,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 22,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s7649",
+    "seed": 7649,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 18,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s7749",
+    "seed": 7749,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s7849",
+    "seed": 7849,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s7949",
+    "seed": 7949,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 12,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s8049",
+    "seed": 8049,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 24,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s8149",
+    "seed": 8149,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 12,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s8249",
+    "seed": 8249,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 19,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s8349",
+    "seed": 8349,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s8449",
+    "seed": 8449,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 31,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s8549",
+    "seed": 8549,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s8649",
+    "seed": 8649,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 18,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s8749",
+    "seed": 8749,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 17,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s8849",
+    "seed": 8849,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 4,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s8949",
+    "seed": 8949,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 29,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s9049",
+    "seed": 9049,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s9149",
+    "seed": 9149,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 13,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s9249",
+    "seed": 9249,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 20,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s9349",
+    "seed": 9349,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 10,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s9449",
+    "seed": 9449,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 30,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s9549",
+    "seed": 9549,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 16,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s9649",
+    "seed": 9649,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": false,
+    "movesCount": 14,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s9749",
+    "seed": 9749,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 15,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s9849",
+    "seed": 9849,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 22,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_easy_classical_s9949",
+    "seed": 9949,
+    "difficulty": "easy",
+    "method": "classical",
+    "won": true,
+    "movesCount": 30,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s49",
+    "seed": 49,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 90,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s149",
+    "seed": 149,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s249",
+    "seed": 249,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 4,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s349",
+    "seed": 349,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 3,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s449",
+    "seed": 449,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s549",
+    "seed": 549,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 109,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s649",
+    "seed": 649,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 60,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s749",
+    "seed": 749,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 67,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s849",
+    "seed": 849,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s949",
+    "seed": 949,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 103,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s1049",
+    "seed": 1049,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 76,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s1149",
+    "seed": 1149,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 93,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s1249",
+    "seed": 1249,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 78,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s1349",
+    "seed": 1349,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 85,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s1449",
+    "seed": 1449,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 97,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s1549",
+    "seed": 1549,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 4,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s1649",
+    "seed": 1649,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 83,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s1749",
+    "seed": 1749,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s1849",
+    "seed": 1849,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 92,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s1949",
+    "seed": 1949,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 74,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s2049",
+    "seed": 2049,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s2149",
+    "seed": 2149,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s2249",
+    "seed": 2249,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 5,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s2349",
+    "seed": 2349,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 75,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s2449",
+    "seed": 2449,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s2549",
+    "seed": 2549,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 79,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s2649",
+    "seed": 2649,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s2749",
+    "seed": 2749,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 73,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s2849",
+    "seed": 2849,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 79,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s2949",
+    "seed": 2949,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 73,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s3049",
+    "seed": 3049,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 68,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s3149",
+    "seed": 3149,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s3249",
+    "seed": 3249,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 78,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s3349",
+    "seed": 3349,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s3449",
+    "seed": 3449,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 92,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s3549",
+    "seed": 3549,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 58,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s3649",
+    "seed": 3649,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s3749",
+    "seed": 3749,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 77,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s3849",
+    "seed": 3849,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 97,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s3949",
+    "seed": 3949,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 83,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s4049",
+    "seed": 4049,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 76,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s4149",
+    "seed": 4149,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 10,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s4249",
+    "seed": 4249,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 85,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s4349",
+    "seed": 4349,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 4,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s4449",
+    "seed": 4449,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 81,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s4549",
+    "seed": 4549,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 75,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s4649",
+    "seed": 4649,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 10,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s4749",
+    "seed": 4749,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 4,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s4849",
+    "seed": 4849,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 6,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s4949",
+    "seed": 4949,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 77,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s5049",
+    "seed": 5049,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 80,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s5149",
+    "seed": 5149,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 58,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s5249",
+    "seed": 5249,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 73,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s5349",
+    "seed": 5349,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 7,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s5449",
+    "seed": 5449,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s5549",
+    "seed": 5549,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 82,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s5649",
+    "seed": 5649,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 80,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s5749",
+    "seed": 5749,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 8,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s5849",
+    "seed": 5849,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 93,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s5949",
+    "seed": 5949,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 88,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s6049",
+    "seed": 6049,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 72,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s6149",
+    "seed": 6149,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s6249",
+    "seed": 6249,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s6349",
+    "seed": 6349,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 85,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s6449",
+    "seed": 6449,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 74,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s6549",
+    "seed": 6549,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 73,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s6649",
+    "seed": 6649,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s6749",
+    "seed": 6749,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s6849",
+    "seed": 6849,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 79,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s6949",
+    "seed": 6949,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 7,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s7049",
+    "seed": 7049,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s7149",
+    "seed": 7149,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s7249",
+    "seed": 7249,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 7,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s7349",
+    "seed": 7349,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s7449",
+    "seed": 7449,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 88,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s7549",
+    "seed": 7549,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 82,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s7649",
+    "seed": 7649,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 43,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s7749",
+    "seed": 7749,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s7849",
+    "seed": 7849,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s7949",
+    "seed": 7949,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 79,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s8049",
+    "seed": 8049,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 106,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s8149",
+    "seed": 8149,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 14,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s8249",
+    "seed": 8249,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 73,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s8349",
+    "seed": 8349,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 139,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s8449",
+    "seed": 8449,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 80,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s8549",
+    "seed": 8549,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 79,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s8649",
+    "seed": 8649,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 95,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s8749",
+    "seed": 8749,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 77,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s8849",
+    "seed": 8849,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s8949",
+    "seed": 8949,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s9049",
+    "seed": 9049,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 93,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s9149",
+    "seed": 9149,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 25,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s9249",
+    "seed": 9249,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 69,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s9349",
+    "seed": 9349,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 76,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s9449",
+    "seed": 9449,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 71,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s9549",
+    "seed": 9549,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 71,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s9649",
+    "seed": 9649,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 80,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s9749",
+    "seed": 9749,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 11,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s9849",
+    "seed": 9849,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": true,
+    "movesCount": 77,
+    "terminalOutcome": "won",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_medium_classical_s9949",
+    "seed": 9949,
+    "difficulty": "medium",
+    "method": "classical",
+    "won": false,
+    "movesCount": 74,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s49",
+    "seed": 49,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s149",
+    "seed": 149,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s249",
+    "seed": 249,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 17,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s349",
+    "seed": 349,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 8,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s449",
+    "seed": 449,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s549",
+    "seed": 549,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s649",
+    "seed": 649,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s749",
+    "seed": 749,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s849",
+    "seed": 849,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s949",
+    "seed": 949,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s1049",
+    "seed": 1049,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s1149",
+    "seed": 1149,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s1249",
+    "seed": 1249,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s1349",
+    "seed": 1349,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s1449",
+    "seed": 1449,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 14,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s1549",
+    "seed": 1549,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 4,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s1649",
+    "seed": 1649,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 20,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s1749",
+    "seed": 1749,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 3,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s1849",
+    "seed": 1849,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 34,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s1949",
+    "seed": 1949,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s2049",
+    "seed": 2049,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s2149",
+    "seed": 2149,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 85,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s2249",
+    "seed": 2249,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 4,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s2349",
+    "seed": 2349,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s2449",
+    "seed": 2449,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s2549",
+    "seed": 2549,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 122,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s2649",
+    "seed": 2649,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 15,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s2749",
+    "seed": 2749,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 148,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s2849",
+    "seed": 2849,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s2949",
+    "seed": 2949,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 84,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s3049",
+    "seed": 3049,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 4,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s3149",
+    "seed": 3149,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s3249",
+    "seed": 3249,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 34,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s3349",
+    "seed": 3349,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s3449",
+    "seed": 3449,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 4,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s3549",
+    "seed": 3549,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 4,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s3649",
+    "seed": 3649,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 49,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s3749",
+    "seed": 3749,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s3849",
+    "seed": 3849,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s3949",
+    "seed": 3949,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 19,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s4049",
+    "seed": 4049,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s4149",
+    "seed": 4149,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 9,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s4249",
+    "seed": 4249,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s4349",
+    "seed": 4349,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 11,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s4449",
+    "seed": 4449,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s4549",
+    "seed": 4549,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 26,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s4649",
+    "seed": 4649,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 10,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s4749",
+    "seed": 4749,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s4849",
+    "seed": 4849,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s4949",
+    "seed": 4949,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 61,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s5049",
+    "seed": 5049,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 59,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s5149",
+    "seed": 5149,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s5249",
+    "seed": 5249,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 6,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s5349",
+    "seed": 5349,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 7,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s5449",
+    "seed": 5449,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 3,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s5549",
+    "seed": 5549,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 18,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s5649",
+    "seed": 5649,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 51,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s5749",
+    "seed": 5749,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 53,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s5849",
+    "seed": 5849,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s5949",
+    "seed": 5949,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 127,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s6049",
+    "seed": 6049,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 98,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s6149",
+    "seed": 6149,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s6249",
+    "seed": 6249,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s6349",
+    "seed": 6349,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s6449",
+    "seed": 6449,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s6549",
+    "seed": 6549,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s6649",
+    "seed": 6649,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 29,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s6749",
+    "seed": 6749,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s6849",
+    "seed": 6849,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s6949",
+    "seed": 6949,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s7049",
+    "seed": 7049,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s7149",
+    "seed": 7149,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 18,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s7249",
+    "seed": 7249,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s7349",
+    "seed": 7349,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 128,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s7449",
+    "seed": 7449,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 14,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s7549",
+    "seed": 7549,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 54,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s7649",
+    "seed": 7649,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 21,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s7749",
+    "seed": 7749,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 4,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s7849",
+    "seed": 7849,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s7949",
+    "seed": 7949,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 60,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s8049",
+    "seed": 8049,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s8149",
+    "seed": 8149,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s8249",
+    "seed": 8249,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 3,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s8349",
+    "seed": 8349,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s8449",
+    "seed": 8449,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s8549",
+    "seed": 8549,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s8649",
+    "seed": 8649,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s8749",
+    "seed": 8749,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 150,
+    "terminalOutcome": "continue",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s8849",
+    "seed": 8849,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 6,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s8949",
+    "seed": 8949,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 143,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s9049",
+    "seed": 9049,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 8,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s9149",
+    "seed": 9149,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s9249",
+    "seed": 9249,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 2,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s9349",
+    "seed": 9349,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 3,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s9449",
+    "seed": 9449,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 106,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s9549",
+    "seed": 9549,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 5,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s9649",
+    "seed": 9649,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 1,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s9749",
+    "seed": 9749,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 4,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s9849",
+    "seed": 9849,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 136,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  },
+  {
+    "gameId": "exp_1792471827737_game_hard_classical_s9949",
+    "seed": 9949,
+    "difficulty": "hard",
+    "method": "classical",
+    "won": false,
+    "movesCount": 36,
+    "terminalOutcome": "lost",
+    "totalCost": 0
+  }
+]
