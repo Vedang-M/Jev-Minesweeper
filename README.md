@@ -166,7 +166,7 @@ The project features a deterministic, paired benchmarking suite evaluating Class
 
 | Metric | Classical Solver (`exp_1792471827737`) | Laya Local MPS (`exp_1792472002589`) | JEV OpenRouter API (`exp_1792470142530`) |
 | :--- | :--- | :--- | :--- |
-| **Total Games Completed** | **300** (100 Easy, 100 Medium, 100 Hard) | **30** (10 Easy, 10 Medium, 10 Hard) | Paired preliminary run |
+| **Total Games Completed** | **300** (100 Easy, 100 Medium, 100 Hard) | **30** (10 Easy, 10 Medium, 10 Hard) | 9 paired games (3 Easy, 3 Med, 3 Hard) |
 | **Overall Game Win Rate** | **35.0%** [29.8%, 40.6%] | **0.0%** [0.0%, 11.3%] | 0.0% (Preliminary) |
 | **- Easy Win Rate** | **64.0%** [54.2%, 72.7%] | 0.0% [0.0%, 27.8%] | 0.0% |
 | **- Medium Win Rate** | **41.0%** [31.9%, 50.8%] | 0.0% [0.0%, 27.8%] | 0.0% |
@@ -175,8 +175,8 @@ The project features a deterministic, paired benchmarking suite evaluating Class
 | **Valid Decision Rate** | **100.0%** (11,853/11,853) | **100.0%** (85/85) | 83.33% (25/30) |
 | **Safe Move Rate** | **98.54%** [98.20%, 98.80%] | **64.71%** [53.1%, 73.7%] | 64.00% [44.5%, 79.8%] |
 | **Guaranteed Safe Match Rate**| **100.0%** (11,519/11,519) | **33.33%** (21/63) | 14.29% (2/14) |
-| **Median Decision Latency** | **< 1 ms** | **180 ms** (Apple Silicon `mps`) | 1,650 ms (Network API) |
-| **p90 Latency** | **1 ms** | **198 ms** | 2,150 ms |
+| **Median Decision Latency** | **< 1 ms** (algorithm) | **201 ms** (local HTTP to MPS) | 600 ms (cloud API) |
+| **p90 Latency** | **1 ms** | **290 ms** | 696 ms |
 | **Total Cost** | **$0.00** | **$0.00** (Local) | ~$0.0165 |
 
 *Note on JEV Live Scaling*: Real API queries were verified, but scaling beyond initial trials is halted due to upstream account credit exhaustion (HTTP 402 from OpenRouter).

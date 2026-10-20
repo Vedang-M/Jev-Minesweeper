@@ -33,7 +33,7 @@ interface GameRow {
 }
 
 interface EngineDifficultySummary {
-    gameLevel: {
+    gameLevel?: {
         totalGames: number;
         wonGames: number;
         lostGames: number;
@@ -42,7 +42,7 @@ interface EngineDifficultySummary {
         winRateCi95: [number, number];
         avgMovesPerGame: number;
     };
-    decisionLevel: {
+    decisionLevel?: {
         totalDecisions: number;
         validDecisions: number;
         validRate: number;
@@ -60,12 +60,25 @@ interface EngineDifficultySummary {
         p90LatencyMs: number;
         totalCostUsd: number;
     };
-    diagnosticSnapshot: {
+    diagnosticSnapshot?: {
         totalSnapshots: number;
         validRate: number;
         safeRate: number;
         matchGuaranteedRate: number;
     };
+    // Legacy schema format in exp_1792470142530
+    totalDecisions?: number;
+    validDecisions?: number;
+    validRate?: number;
+    safeRate?: number;
+    safeRateCi95?: [number, number];
+    mineHitRate?: number;
+    guaranteedSafeSituations?: number;
+    matchGuaranteedRate?: number;
+    avgLatencyMs?: number;
+    medianLatencyMs?: number;
+    p90LatencyMs?: number;
+    totalCostUsd?: number;
 }
 
 interface BenchmarkSummary {
@@ -172,83 +185,112 @@ export function auditExperiment(expId: string): boolean {
 
             console.log(`\n--- Auditing Engine: ${eng} | Difficulty: ${diff} ---`);
 
-            // 1. Audit game-level metrics
-            if (gameRecords.length > 0) {
-                const groupGames = gameRecords.filter((g) => g.method === eng && g.difficulty === diff);
-                const total = groupGames.length;
-                const won = groupGames.filter((g) => g.won).length;
-                const lost = groupGames.filter((g) => g.terminalOutcome === 'lost').length;
-                const invalid = groupGames.filter((g) => g.terminalOutcome === 'invalid_move').length;
+            // Check if modern schema or legacy flat schema
+            if (summaryEntry.gameLevel && summaryEntry.decisionLevel) {
+                // Modern schema
+                if (gameRecords.length > 0) {
+                    const groupGames = gameRecords.filter((g) => g.method === eng && g.difficulty === diff);
+                    const total = groupGames.length;
+                    const won = groupGames.filter((g) => g.won).length;
+                    const lost = groupGames.filter((g) => g.terminalOutcome === 'lost').length;
+                    const invalid = groupGames.filter((g) => g.terminalOutcome === 'invalid_move').length;
 
-                if (total !== summaryEntry.gameLevel.totalGames || won !== summaryEntry.gameLevel.wonGames || lost !== summaryEntry.gameLevel.lostGames) {
-                    console.error(`[FAIL] Game reconciliation mismatch in ${eng}-${diff}!`);
-                    console.error(`Raw games: total=${total}, won=${won}, lost=${lost}`);
-                    console.error(`Summary: total=${summaryEntry.gameLevel.totalGames}, won=${summaryEntry.gameLevel.wonGames}, lost=${summaryEntry.gameLevel.lostGames}`);
-                    return false;
-                }
-                const expectedWinRate = total > 0 ? won / total : 0;
-                if (Math.abs(expectedWinRate - summaryEntry.gameLevel.winRate) > 1e-4) {
-                    console.error(`[FAIL] Win rate mismatch! Expected ${expectedWinRate}, got ${summaryEntry.gameLevel.winRate}`);
-                    return false;
-                }
-                console.log(`✓ Games reconciled: ${total} total, ${won} won, ${lost} lost, ${invalid} invalid. Win rate: ${(expectedWinRate * 100).toFixed(1)}%`);
-            }
-
-            // 2. Audit decision-level metrics (strictly full_game phase)
-            if (jsonlRecords.length > 0) {
-                const fullGameDecs = jsonlRecords.filter((d) => d.method === eng && d.difficulty === diff && d.phase === 'full_game');
-                const total = fullGameDecs.length;
-                const valid = fullGameDecs.filter((d) => d.isValid).length;
-                const safe = fullGameDecs.filter((d) => d.isValid && d.isSafe).length;
-                const mineHits = fullGameDecs.filter((d) => d.isValid && !d.isSafe).length;
-                const gExisted = fullGameDecs.filter((d) => d.guaranteedSafeExisted).length;
-                const gMatched = fullGameDecs.filter((d) => d.guaranteedSafeExisted && d.matchedGuaranteedSafe).length;
-
-                if (total !== summaryEntry.decisionLevel.totalDecisions || valid !== summaryEntry.decisionLevel.validDecisions) {
-                    console.error(`[FAIL] Decision count mismatch in ${eng}-${diff}!`);
-                    console.error(`Raw full_game decs: total=${total}, valid=${valid}; Summary: total=${summaryEntry.decisionLevel.totalDecisions}, valid=${summaryEntry.decisionLevel.validDecisions}`);
-                    return false;
+                    if (total !== summaryEntry.gameLevel.totalGames || won !== summaryEntry.gameLevel.wonGames || lost !== summaryEntry.gameLevel.lostGames) {
+                        console.error(`[FAIL] Game reconciliation mismatch in ${eng}-${diff}!`);
+                        console.error(`Raw games: total=${total}, won=${won}, lost=${lost}`);
+                        console.error(`Summary: total=${summaryEntry.gameLevel.totalGames}, won=${summaryEntry.gameLevel.wonGames}, lost=${summaryEntry.gameLevel.lostGames}`);
+                        return false;
+                    }
+                    const expectedWinRate = total > 0 ? won / total : 0;
+                    if (Math.abs(expectedWinRate - summaryEntry.gameLevel.winRate) > 1e-4) {
+                        console.error(`[FAIL] Win rate mismatch! Expected ${expectedWinRate}, got ${summaryEntry.gameLevel.winRate}`);
+                        return false;
+                    }
+                    console.log(`✓ Games reconciled: ${total} total, ${won} won, ${lost} lost, ${invalid} invalid. Win rate: ${(expectedWinRate * 100).toFixed(1)}%`);
                 }
 
-                if (safe !== summaryEntry.decisionLevel.safeDecisions || mineHits !== summaryEntry.decisionLevel.mineHits) {
-                    console.error(`[FAIL] Safe decisions / mine hits mismatch!`);
-                    return false;
-                }
+                if (jsonlRecords.length > 0) {
+                    const fullGameDecs = jsonlRecords.filter((d) => d.method === eng && d.difficulty === diff && d.phase === 'full_game');
+                    const total = fullGameDecs.length;
+                    const valid = fullGameDecs.filter((d) => d.isValid).length;
+                    const safe = fullGameDecs.filter((d) => d.isValid && d.isSafe).length;
+                    const mineHits = fullGameDecs.filter((d) => d.isValid && !d.isSafe).length;
+                    const gExisted = fullGameDecs.filter((d) => d.guaranteedSafeExisted).length;
+                    const gMatched = fullGameDecs.filter((d) => d.guaranteedSafeExisted && d.matchedGuaranteedSafe).length;
 
-                if (gExisted !== summaryEntry.decisionLevel.guaranteedSafeOpportunities || gMatched !== summaryEntry.decisionLevel.matchedGuaranteedSafe) {
-                    console.error(`[FAIL] Guaranteed safe opportunities mismatch!`);
+                    if (total !== summaryEntry.decisionLevel.totalDecisions || valid !== summaryEntry.decisionLevel.validDecisions) {
+                        console.error(`[FAIL] Decision count mismatch in ${eng}-${diff}!`);
+                        return false;
+                    }
+
+                    if (safe !== summaryEntry.decisionLevel.safeDecisions || mineHits !== summaryEntry.decisionLevel.mineHits) {
+                        console.error(`[FAIL] Safe decisions / mine hits mismatch!`);
+                        return false;
+                    }
+
+                    if (gExisted !== summaryEntry.decisionLevel.guaranteedSafeOpportunities || gMatched !== summaryEntry.decisionLevel.matchedGuaranteedSafe) {
+                        console.error(`[FAIL] Guaranteed safe opportunities mismatch!`);
+                        return false;
+                    }
+
+                    const expectedSafeRate = valid > 0 ? safe / valid : 0;
+                    if (Math.abs(expectedSafeRate - summaryEntry.decisionLevel.safeRate) > 1e-4) {
+                        console.error(`[FAIL] Safe rate mismatch! Expected ${expectedSafeRate}, Got ${summaryEntry.decisionLevel.safeRate}`);
+                        return false;
+                    }
+
+                    const expectedGMatchRate = gExisted > 0 ? gMatched / gExisted : 0;
+                    if (Math.abs(expectedGMatchRate - summaryEntry.decisionLevel.matchGuaranteedRate) > 1e-4) {
+                        console.error(`[FAIL] Guaranteed match rate mismatch! Expected ${expectedGMatchRate}, Got ${summaryEntry.decisionLevel.matchGuaranteedRate}`);
+                        return false;
+                    }
+
+                    console.log(`✓ Full-game decisions reconciled: ${total} attempts, ${valid} valid, ${safe} safe (${(expectedSafeRate * 100).toFixed(2)}%), ${gMatched}/${gExisted} guaranteed safe selected (${(expectedGMatchRate * 100).toFixed(2)}%).`);
+
+                    if (summaryEntry.diagnosticSnapshot) {
+                        const snapDecs = jsonlRecords.filter((d) => d.method === eng && d.difficulty === diff && d.phase === 'diagnostic_snapshot');
+                        const snapTotal = snapDecs.length;
+                        const snapValid = snapDecs.filter((d) => d.isValid).length;
+                        const snapSafe = snapDecs.filter((d) => d.isValid && d.isSafe).length;
+                        const snapGExisted = snapDecs.filter((d) => d.guaranteedSafeExisted).length;
+                        const snapGMatched = snapDecs.filter((d) => d.guaranteedSafeExisted && d.matchedGuaranteedSafe).length;
+
+                        if (snapTotal !== summaryEntry.diagnosticSnapshot.totalSnapshots) {
+                            console.error(`[FAIL] Diagnostic snapshot count mismatch in ${eng}-${diff}!`);
+                            return false;
+                        }
+                        const expectedSnapSafeRate = snapValid > 0 ? snapSafe / snapValid : 0;
+                        const expectedSnapGMatch = snapGExisted > 0 ? snapGMatched / snapGExisted : 0;
+                        console.log(`✓ Diagnostic snapshots reconciled: ${snapTotal} snapshots, safe rate: ${(expectedSnapSafeRate * 100).toFixed(1)}%, guaranteed match: ${(expectedSnapGMatch * 100).toFixed(1)}%.`);
+                    }
+                }
+            } else if (summaryEntry.totalDecisions !== undefined) {
+                // Legacy schema (exp_1792470142530)
+                const groupDecs = jsonlRecords.filter((d) => d.method === eng && d.difficulty === diff);
+                const total = groupDecs.length;
+                const valid = groupDecs.filter((d) => d.isValid).length;
+                const safe = groupDecs.filter((d) => d.isValid && d.isSafe).length;
+                const gExisted = groupDecs.filter((d) => d.guaranteedSafeExisted).length;
+                const gMatched = groupDecs.filter((d) => d.guaranteedSafeExisted && d.matchedGuaranteedSafe).length;
+
+                if (total !== summaryEntry.totalDecisions || valid !== summaryEntry.validDecisions) {
+                    console.error(`[FAIL] Legacy decision count mismatch in ${eng}-${diff}! Raw=${total}/${valid}, Summary=${summaryEntry.totalDecisions}/${summaryEntry.validDecisions}`);
                     return false;
                 }
 
                 const expectedSafeRate = valid > 0 ? safe / valid : 0;
-                if (Math.abs(expectedSafeRate - summaryEntry.decisionLevel.safeRate) > 1e-4) {
-                    console.error(`[FAIL] Safe rate mismatch! Expected ${expectedSafeRate}, Got ${summaryEntry.decisionLevel.safeRate}`);
+                if (Math.abs(expectedSafeRate - (summaryEntry.safeRate || 0)) > 1e-4) {
+                    console.error(`[FAIL] Safe rate mismatch in legacy run!`);
                     return false;
                 }
 
                 const expectedGMatchRate = gExisted > 0 ? gMatched / gExisted : 0;
-                if (Math.abs(expectedGMatchRate - summaryEntry.decisionLevel.matchGuaranteedRate) > 1e-4) {
-                    console.error(`[FAIL] Guaranteed match rate mismatch! Expected ${expectedGMatchRate}, Got ${summaryEntry.decisionLevel.matchGuaranteedRate}`);
+                if (Math.abs(expectedGMatchRate - (summaryEntry.matchGuaranteedRate || 0)) > 1e-4) {
+                    console.error(`[FAIL] Guaranteed match rate mismatch in legacy run!`);
                     return false;
                 }
 
-                console.log(`✓ Full-game decisions reconciled: ${total} attempts, ${valid} valid, ${safe} safe (${(expectedSafeRate * 100).toFixed(2)}%), ${gMatched}/${gExisted} guaranteed safe selected (${(expectedGMatchRate * 100).toFixed(2)}%).`);
-
-                // 3. Audit diagnostic snapshot phase
-                const snapDecs = jsonlRecords.filter((d) => d.method === eng && d.difficulty === diff && d.phase === 'diagnostic_snapshot');
-                const snapTotal = snapDecs.length;
-                const snapValid = snapDecs.filter((d) => d.isValid).length;
-                const snapSafe = snapDecs.filter((d) => d.isValid && d.isSafe).length;
-                const snapGExisted = snapDecs.filter((d) => d.guaranteedSafeExisted).length;
-                const snapGMatched = snapDecs.filter((d) => d.guaranteedSafeExisted && d.matchedGuaranteedSafe).length;
-
-                if (snapTotal !== summaryEntry.diagnosticSnapshot.totalSnapshots) {
-                    console.error(`[FAIL] Diagnostic snapshot count mismatch in ${eng}-${diff}!`);
-                    return false;
-                }
-                const expectedSnapSafeRate = snapValid > 0 ? snapSafe / snapValid : 0;
-                const expectedSnapGMatch = snapGExisted > 0 ? snapGMatched / snapGExisted : 0;
-                console.log(`✓ Diagnostic snapshots reconciled: ${snapTotal} snapshots, safe rate: ${(expectedSnapSafeRate * 100).toFixed(1)}%, guaranteed match: ${(expectedSnapGMatch * 100).toFixed(1)}%.`);
+                console.log(`✓ Legacy paired decisions reconciled: ${total} total (${valid} valid), safe: ${safe} (${(expectedSafeRate * 100).toFixed(1)}%), guaranteed: ${gMatched}/${gExisted} (${(expectedGMatchRate * 100).toFixed(1)}%).`);
             }
         }
     }
@@ -257,7 +299,7 @@ export function auditExperiment(expId: string): boolean {
     return true;
 }
 
-const expIds = ['exp_1792471827737', 'exp_1792472002589'];
+const expIds = ['exp_1792471827737', 'exp_1792472002589', 'exp_1792470142530'];
 let allPassed = true;
 for (const expId of expIds) {
     const passed = auditExperiment(expId);
