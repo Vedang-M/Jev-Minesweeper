@@ -4,12 +4,20 @@ import { solveConstraints } from "./constraintSolver";
 import {
     Solver,
     MoveRecommendation,
+    SolverResponse,
 } from "./solverTypes";
 
 export class ClassicalSolver implements Solver {
-    solve(board: Board): MoveRecommendation[] {
+    solve(board: Board): SolverResponse {
         const constraints = extractConstraints(board);
         const result = solveConstraints(constraints);
+
+        if (result.hasContradiction) {
+            return {
+                recommendations: [],
+                hasContradiction: true,
+            };
+        }
 
         const recommendations: MoveRecommendation[] = [];
 
@@ -20,7 +28,8 @@ export class ClassicalSolver implements Solver {
                 row,
                 col,
                 type: "safe",
-                reason: "Constraint analysis proves this cell is safe.",
+                isGuaranteed: true,
+                reason: "Constraint analysis proves this cell is guaranteed safe.",
             });
         }
 
@@ -31,10 +40,14 @@ export class ClassicalSolver implements Solver {
                 row,
                 col,
                 type: "mine",
-                reason: "Constraint analysis proves this cell is a mine.",
+                isGuaranteed: true,
+                reason: "Constraint analysis proves this cell is a guaranteed mine.",
             });
         }
 
-        return recommendations;
+        return {
+            recommendations,
+            hasContradiction: false,
+        };
     }
 }

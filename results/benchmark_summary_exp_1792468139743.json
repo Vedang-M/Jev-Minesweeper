@@ -1,0 +1,141 @@
+{
+  "experimentId": "exp_1792468139743",
+  "timestamp": "2026-10-20T03:49:07.335Z",
+  "trialsPerDifficulty": 1,
+  "classicalOverall": {
+    "totalDecisions": 216,
+    "validDecisions": 216,
+    "validRate": 1,
+    "safeRate": 0.9954,
+    "safeRateCi95": [
+      0.9742,
+      0.9992
+    ],
+    "mineHitRate": 0.0046,
+    "guaranteedSafeSituations": 214,
+    "matchGuaranteedRate": 1,
+    "avgLatencyMs": 1,
+    "medianLatencyMs": 1,
+    "totalCostUsd": 0
+  },
+  "jevOverall": {
+    "totalDecisions": 9,
+    "validDecisions": 7,
+    "validRate": 0.7778,
+    "safeRate": 0.5714,
+    "safeRateCi95": [
+      0.2505,
+      0.8418
+    ],
+    "mineHitRate": 0.4286,
+    "guaranteedSafeSituations": 7,
+    "matchGuaranteedRate": 0.1429,
+    "avgLatencyMs": 610,
+    "medianLatencyMs": 591,
+    "totalCostUsd": 0.006049
+  },
+  "byDifficulty": {
+    "easy": {
+      "classical": {
+        "totalDecisions": 24,
+        "validDecisions": 24,
+        "validRate": 1,
+        "safeRate": 1,
+        "safeRateCi95": [
+          0.862,
+          1
+        ],
+        "mineHitRate": 0,
+        "guaranteedSafeSituations": 24,
+        "matchGuaranteedRate": 1,
+        "avgLatencyMs": 1,
+        "medianLatencyMs": 1,
+        "totalCostUsd": 0
+      },
+      "jev": {
+        "totalDecisions": 2,
+        "validDecisions": 2,
+        "validRate": 1,
+        "safeRate": 0.5,
+        "safeRateCi95": [
+          0.0945,
+          0.9055
+        ],
+        "mineHitRate": 0.5,
+        "guaranteedSafeSituations": 2,
+        "matchGuaranteedRate": 0,
+        "avgLatencyMs": 656,
+        "medianLatencyMs": 844,
+        "totalCostUsd": 0.000416
+      }
+    },
+    "medium": {
+      "classical": {
+        "totalDecisions": 91,
+        "validDecisions": 91,
+        "validRate": 1,
+        "safeRate": 0.989,
+        "safeRateCi95": [
+          0.9403,
+          0.9981
+        ],
+        "mineHitRate": 0.011,
+        "guaranteedSafeSituations": 89,
+        "matchGuaranteedRate": 1,
+        "avgLatencyMs": 1,
+        "medianLatencyMs": 1,
+        "totalCostUsd": 0
+      },
+      "jev": {
+        "totalDecisions": 4,
+        "validDecisions": 4,
+        "validRate": 1,
+        "safeRate": 0.5,
+        "safeRateCi95": [
+          0.15,
+          0.85
+        ],
+        "mineHitRate": 0.5,
+        "guaranteedSafeSituations": 2,
+        "matchGuaranteedRate": 0.5,
+        "avgLatencyMs": 583,
+        "medianLatencyMs": 591,
+        "totalCostUsd": 0.002943
+      }
+    },
+    "hard": {
+      "classical": {
+        "totalDecisions": 101,
+        "validDecisions": 101,
+        "validRate": 1,
+        "safeRate": 1,
+        "safeRateCi95": [
+          0.9634,
+          1
+        ],
+        "mineHitRate": 0,
+        "guaranteedSafeSituations": 101,
+        "matchGuaranteedRate": 1,
+        "avgLatencyMs": 1,
+        "medianLatencyMs": 1,
+        "totalCostUsd": 0
+      },
+      "jev": {
+        "totalDecisions": 3,
+        "validDecisions": 1,
+        "validRate": 0.3333,
+        "safeRate": 1,
+        "safeRateCi95": [
+          0.2065,
+          1
+        ],
+        "mineHitRate": 0,
+        "guaranteedSafeSituations": 3,
+        "matchGuaranteedRate": 0,
+        "avgLatencyMs": 615,
+        "medianLatencyMs": 608,
+        "totalCostUsd": 0.00269
+      }
+    }
+  }
+}

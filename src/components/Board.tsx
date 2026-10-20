@@ -39,7 +39,7 @@ export default function Board({ board: initialBoard }: BoardProps) {
     const [jevSuggestion, setJevSuggestion] = useState<{
         row: number;
         col: number;
-        confidence: number;
+        confidence: number | null;
     } | null>(null);
 
     const [jevExcludedCells, setJevExcludedCells] = useState<string[]>([]);
@@ -61,6 +61,13 @@ export default function Board({ board: initialBoard }: BoardProps) {
         setJevExcludedCells([]);
         setJevSuggestion(null);
         setJevStatusMessage(null);
+    }
+
+    function clearSuggestionsOnBoardChange() {
+        setSuggestion(null);
+        setJevSuggestion(null);
+        setJevStatusMessage(null);
+        setJevExcludedCells([]);
     }
 
     useEffect(() => {
@@ -147,17 +154,17 @@ export default function Board({ board: initialBoard }: BoardProps) {
         setDifficulty(newDifficulty);
         setBoard(createBoard(newDifficulty));
         resetJevHistory();
+        setSuggestion(null);
         setGameStatus("playing");
         setTime(0);
-        setSuggestion(null);
     }
 
     function resetGame() {
         setBoard(createBoard(difficulty));
         resetJevHistory();
+        setSuggestion(null);
         setGameStatus("playing");
         setTime(0);
-        setSuggestion(null);
     }
 
     function toggleFlag(row: number, col: number) {
@@ -180,6 +187,7 @@ export default function Board({ board: initialBoard }: BoardProps) {
         newBoard[row][col].isFlagged = !newBoard[row][col].isFlagged;
 
         setBoard(newBoard);
+        clearSuggestionsOnBoardChange();
     }
 
     function suggestMove() {
@@ -187,6 +195,15 @@ export default function Board({ board: initialBoard }: BoardProps) {
 
         const constraints = extractConstraints(board);
         const result = solveConstraints(constraints);
+
+        if (result.hasContradiction) {
+            setSuggestion({
+                row: -1,
+                col: -1,
+                reason: "Contradiction detected in board flags/constraints.",
+            });
+            return;
+        }
 
         if (result.safeCells.length > 0) {
             const [row, col] = result.safeCells[0]
@@ -196,7 +213,7 @@ export default function Board({ board: initialBoard }: BoardProps) {
             setSuggestion({
                 row,
                 col,
-                reason: "This cell is proven safe.",
+                reason: "This cell is proven safe by constraint logic.",
             });
 
             return;
@@ -219,7 +236,7 @@ export default function Board({ board: initialBoard }: BoardProps) {
         setSuggestion({
             row: -1,
             col: -1,
-            reason: "No guaranteed safe move found.",
+            reason: "No guaranteed safe move found. A deduction or guess is required.",
         });
     }
 
@@ -281,6 +298,7 @@ export default function Board({ board: initialBoard }: BoardProps) {
 
             setBoard(newBoard);
             setGameStatus("lost");
+            clearSuggestionsOnBoardChange();
             return;
         }
 
@@ -290,15 +308,8 @@ export default function Board({ board: initialBoard }: BoardProps) {
             newBoard[row][col].isRevealed = true;
         }
 
-        // Clear suggestion if the cell was revealed
-        if (suggestion && suggestion.row === row && suggestion.col === col) {
-            setSuggestion(null);
-        }
-        if (jevSuggestion && jevSuggestion.row === row && jevSuggestion.col === col) {
-            setJevSuggestion(null);
-        }
-
         setBoard(newBoard);
+        clearSuggestionsOnBoardChange();
 
         if (checkWin(newBoard)) {
             setGameStatus("won");
@@ -311,8 +322,6 @@ export default function Board({ board: initialBoard }: BoardProps) {
         setIsAskingJev(true);
         setJevStatusMessage(null);
         try {
-            console.log("JEV excluded cells:", jevExcludedCells);
-
             const response = await fetch("/api/jev", {
                 method: "POST",
                 headers: {
@@ -331,15 +340,19 @@ export default function Board({ board: initialBoard }: BoardProps) {
                 return;
             }
 
+            if (!response.ok || result.error) {
+                setJevSuggestion(null);
+                setJevStatusMessage(result.message || result.details || "JEV request failed.");
+                return;
+            }
+
             const moveAnswer = result.answers?.move;
             const choice = moveAnswer?.choice;
-            const confidence = moveAnswer?.confidence;
+            const confidence = typeof moveAnswer?.confidence === "number" ? moveAnswer.confidence : null;
             const isValid = moveAnswer?.valid;
 
-            console.log("JEV returned:", choice);
-
             // If JEV returns an invalid move, or returns a cell that is already in excludeCells
-            if (!choice || confidence === undefined || isValid === false || jevExcludedCells.includes(choice)) {
+            if (!choice || isValid === false || jevExcludedCells.includes(choice)) {
                 setJevSuggestion(null);
                 setJevStatusMessage("JEV returned an invalid or repeated move.");
                 return;
@@ -361,10 +374,12 @@ export default function Board({ board: initialBoard }: BoardProps) {
         } catch (error) {
             console.error("JEV request failed:", error);
             setJevSuggestion(null);
+            setJevStatusMessage("JEV connection error. Application remains playable.");
         } finally {
             setIsAskingJev(false);
         }
     }
+
 
     const difficultiesList: Difficulty[] = ["easy", "medium", "hard"];
 
@@ -483,7 +498,9 @@ export default function Board({ board: initialBoard }: BoardProps) {
                             <div className="flex items-center justify-between">
                                 <span className="text-neutral-500">Confidence</span>
                                 <span className="font-semibold text-neutral-900">
-                                    {Math.round(jevSuggestion.confidence <= 1 ? jevSuggestion.confidence * 100 : jevSuggestion.confidence)}%
+                                    {jevSuggestion.confidence !== null
+                                        ? `${Math.round(jevSuggestion.confidence <= 1 ? jevSuggestion.confidence * 100 : jevSuggestion.confidence)}%`
+                                        : "Not provided"}
                                 </span>
                             </div>
                         </div>

@@ -1,26 +1,37 @@
 import { NextResponse } from "next/server";
 
-type Cell = {
+type CellInput = {
     row: number;
     col: number;
-    isMine: boolean;
+    isMine?: boolean;
     isRevealed: boolean;
     isFlagged: boolean;
-    adjacentMines: number;
+    adjacentMines?: number;
 };
+
+// Limit enforced by OpenRouter JEV choice questions
+const MAX_CHOICES_LIMIT = 255;
 
 export async function POST(request: Request) {
     try {
+        const apiKey = process.env.OPENROUTER_API_KEY;
+        if (!apiKey) {
+            return NextResponse.json(
+                { error: "OPENROUTER_API_KEY is not configured on the server." },
+                { status: 500 }
+            );
+        }
+
         const body = await request.json();
 
-        const board = body.state as Cell[][];
+        const board = body.state as CellInput[][];
         const excludeCells = new Set<string>(
             Array.isArray(body.excludeCells) ? body.excludeCells : []
         );
 
-        if (!Array.isArray(board) || board.length === 0) {
+        if (!Array.isArray(board) || board.length === 0 || !Array.isArray(board[0])) {
             return NextResponse.json(
-                { error: "Invalid board state" },
+                { error: "Invalid board state. Expected non-empty 2D array." },
                 { status: 400 }
             );
         }
@@ -28,189 +39,211 @@ export async function POST(request: Request) {
         const rows = board.length;
         const cols = board[0].length;
 
-        const availableCells = board
-            .flat()
-            .filter(
-                (cell) =>
-                    !cell.isRevealed &&
-                    !cell.isFlagged &&
-                    !excludeCells.has(`${cell.row}-${cell.col}`)
-            )
-            .map((cell) => ({
-                row: cell.row,
-                col: cell.col,
-                key: `${cell.row}-${cell.col}`,
-            }));
+        // Collect available candidates: strictly unrevealed, unflagged, not excluded, within board
+        const availableCells: { row: number; col: number; key: string }[] = [];
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+                const cell = board[r][c];
+                if (!cell || typeof cell.row !== "number" || typeof cell.col !== "number") {
+                    continue;
+                }
+                const key = `${r}-${c}`;
+                if (!cell.isRevealed && !cell.isFlagged && !excludeCells.has(key)) {
+                    availableCells.push({ row: r, col: c, key });
+                }
+            }
+        }
 
         if (availableCells.length === 0) {
             return NextResponse.json({
                 error: "NO_NEW_MOVE",
+                message: "No available candidate cells remain for JEV suggestion.",
             });
         }
 
         /*
-         * IMPORTANT:
-         * Never send isMine to JEV.
-         *
-         * Revealed cells expose their number.
-         * Hidden cells expose no mine information.
+         * STRICT INFORMATION BOUNDARY:
+         * Never expose hidden mine information.
+         * Revealed cells show their adjacent mine count.
+         * Hidden cells have adjacentMines set to null and isMine stripped.
          */
         const visibleBoard = board.map((row) =>
             row.map((cell) => ({
                 row: cell.row,
                 col: cell.col,
-                isRevealed: cell.isRevealed,
-                isFlagged: cell.isFlagged,
-                adjacentMines: cell.isRevealed
-                    ? cell.adjacentMines
-                    : null,
+                isRevealed: Boolean(cell.isRevealed),
+                isFlagged: Boolean(cell.isFlagged),
+                adjacentMines: cell.isRevealed ? (cell.adjacentMines ?? 0) : null,
             }))
         );
 
-        /*
-         * JEV has a maximum of 255 choices.
-         *
-         * Therefore we cannot give every Hard-level cell as a choice.
-         * Instead, divide the decision into row and column.
-         */
-        const rowsWithMoves = [
-            ...new Set(availableCells.map((cell) => cell.row)),
-        ];
+        let questions: Record<string, unknown>;
+        let decisionMode: "direct" | "row_col";
 
-        const colsWithMoves = [
-            ...new Set(availableCells.map((cell) => cell.col)),
-        ];
-
-        const questions = {
-            row: {
-                type: "choice",
-                instructions:
-                    "Choose the row containing the safest unrevealed cell according to the visible Minesweeper board.",
-                criteria: Object.fromEntries(
-                    rowsWithMoves.map((row) => [
-                        String(row),
-                        `Choose row ${row}.`,
-                    ])
-                ),
-            },
-
-            col: {
-                type: "choice",
-                instructions:
-                    "Choose the column containing the safest unrevealed cell according to the visible Minesweeper board.",
-                criteria: Object.fromEntries(
-                    colsWithMoves.map((col) => [
-                        String(col),
-                        `Choose column ${col}.`,
-                    ])
-                ),
-            },
-        };
-
-        const response = await fetch(
-            "https://openrouter.ai/api/alpha/decisions",
-            {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
-                    "Content-Type": "application/json",
+        if (availableCells.length <= MAX_CHOICES_LIMIT) {
+            // Direct candidate selection avoids row/col cross-product invalid coordinate problems!
+            decisionMode = "direct";
+            questions = {
+                cell: {
+                    type: "choice",
+                    instructions:
+                        "Choose the single safest unrevealed cell coordinate to reveal on this Minesweeper board.",
+                    criteria: Object.fromEntries(
+                        availableCells.map((cell) => [
+                            cell.key,
+                            `Select cell at row ${cell.row}, column ${cell.col}.`,
+                        ])
+                    ),
                 },
-                body: JSON.stringify({
-                    model: "~typesafe/jev-latest",
-                    state: {
-                        board: visibleBoard,
-                        availableCells,
+            };
+        } else {
+            // Fallback for large boards (>255 candidates, e.g. pristine Hard board with 480 cells)
+            decisionMode = "row_col";
+            const rowsWithMoves = [
+                ...new Set(availableCells.map((cell) => cell.row)),
+            ];
+            const colsWithMoves = [
+                ...new Set(availableCells.map((cell) => cell.col)),
+            ];
+
+            questions = {
+                row: {
+                    type: "choice",
+                    instructions:
+                        "Choose the row containing the safest unrevealed cell according to the visible Minesweeper board.",
+                    criteria: Object.fromEntries(
+                        rowsWithMoves.map((row) => [
+                            String(row),
+                            `Choose row ${row}.`,
+                        ])
+                    ),
+                },
+                col: {
+                    type: "choice",
+                    instructions:
+                        "Choose the column containing the safest unrevealed cell according to the visible Minesweeper board.",
+                    criteria: Object.fromEntries(
+                        colsWithMoves.map((col) => [
+                            String(col),
+                            `Choose column ${col}.`,
+                        ])
+                    ),
+                },
+            };
+        }
+
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000);
+
+        let response: Response;
+        try {
+            response = await fetch(
+                "https://openrouter.ai/api/alpha/decisions",
+                {
+                    method: "POST",
+                    headers: {
+                        Authorization: `Bearer ${apiKey}`,
+                        "Content-Type": "application/json",
                     },
-                    questions,
-                }),
-            }
-        );
+                    body: JSON.stringify({
+                        model: "~typesafe/jev-latest",
+                        state: {
+                            board: visibleBoard,
+                            candidateCount: availableCells.length,
+                        },
+                        questions,
+                    }),
+                    signal: controller.signal,
+                }
+            );
+        } finally {
+            clearTimeout(timeoutId);
+        }
 
         const data = await response.json();
 
-        console.log("JEV response:", data);
-
         if (!response.ok) {
-            return NextResponse.json(data, {
-                status: response.status,
-            });
-        }
-
-        const selectedRow = Number(data.answers?.row?.choice);
-        const selectedCol = Number(data.answers?.col?.choice);
-
-        if (
-            !Number.isInteger(selectedRow) ||
-            !Number.isInteger(selectedCol)
-        ) {
-            return NextResponse.json({
-                ...data,
-                answers: {
-                    ...data.answers,
-                    move: null,
+            return NextResponse.json(
+                {
+                    error: "JEV_API_ERROR",
+                    status: response.status,
+                    details: data?.error?.message || "OpenRouter JEV API returned an error",
                 },
-            });
+                { status: response.status }
+            );
         }
 
-        const selectedKey = `${selectedRow}-${selectedCol}`;
+        let selectedKey: string | null = null;
+        let confidence: number | null = null;
+
+        if (decisionMode === "direct") {
+            const rawChoice = data.answers?.cell?.choice;
+            if (typeof rawChoice === "string") {
+                selectedKey = rawChoice;
+            }
+            if (typeof data.answers?.cell?.confidence === "number") {
+                confidence = data.answers.cell.confidence;
+            }
+        } else {
+            const selectedRow = Number(data.answers?.row?.choice);
+            const selectedCol = Number(data.answers?.col?.choice);
+
+            if (Number.isInteger(selectedRow) && Number.isInteger(selectedCol)) {
+                selectedKey = `${selectedRow}-${selectedCol}`;
+            }
+
+            const rowConf =
+                typeof data.answers?.row?.confidence === "number"
+                    ? data.answers.row.confidence
+                    : null;
+            const colConf =
+                typeof data.answers?.col?.confidence === "number"
+                    ? data.answers.col.confidence
+                    : null;
+
+            if (rowConf !== null && colConf !== null) {
+                confidence = rowConf * colConf;
+            } else if (rowConf !== null) {
+                confidence = rowConf;
+            } else if (colConf !== null) {
+                confidence = colConf;
+            }
+        }
 
         /*
-         * CRITICAL:
-         *
-         * Do NOT silently replace JEV's answer with another cell.
-         *
-         * If JEV chooses an invalid combination, record it as invalid.
-         * Otherwise the experiment becomes contaminated because the
-         * application is effectively making the decision for JEV.
+         * Validate the selected coordinate strictly:
+         * 1. Must be a valid string key
+         * 2. Must exist in availableCells (unrevealed, unflagged, not excluded)
+         * NEVER silently replace with another cell.
          */
-        const isValid = availableCells.some(
-            (cell) => cell.key === selectedKey
+        const isValid = Boolean(
+            selectedKey && availableCells.some((cell) => cell.key === selectedKey)
         );
-
-        const rowConfidence =
-            typeof data.answers?.row?.confidence === "number"
-                ? data.answers.row.confidence
-                : null;
-
-        const colConfidence =
-            typeof data.answers?.col?.confidence === "number"
-                ? data.answers.col.confidence
-                : null;
-
-        const confidence =
-            rowConfidence !== null && colConfidence !== null
-                ? rowConfidence * colConfidence
-                : rowConfidence ?? colConfidence ?? null;
 
         return NextResponse.json({
             ...data,
-
+            decisionMode,
             answers: {
                 ...data.answers,
-
-                move: isValid
-                    ? {
-                        choice: selectedKey,
-                        confidence,
-                        valid: true,
-                    }
-                    : {
-                        choice: selectedKey,
-                        confidence,
-                        valid: false,
-                    },
+                move: {
+                    choice: selectedKey,
+                    confidence,
+                    valid: isValid,
+                },
             },
         });
-    } catch (error) {
-        console.error("JEV error:", error);
-
+    } catch (error: unknown) {
+        const isAbort = error instanceof Error && error.name === "AbortError";
         return NextResponse.json(
             {
-                error: "JEV request failed",
+                error: isAbort ? "JEV_TIMEOUT" : "JEV_REQUEST_FAILED",
+                message: isAbort
+                    ? "JEV decision request timed out after 15 seconds."
+                    : error instanceof Error
+                    ? error.message
+                    : "Unexpected error during JEV request.",
             },
-            {
-                status: 500,
-            }
+            { status: 500 }
         );
     }
 }

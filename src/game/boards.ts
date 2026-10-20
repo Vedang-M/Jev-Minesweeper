@@ -131,4 +131,3 @@ export function createBoard(
 
     return createEmptyBoard(rows, cols);
 }
-const board = createBoard();

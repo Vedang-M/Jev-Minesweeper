@@ -1,12 +1,16 @@
 import { Board } from "@/types/games";
 import {
     Solver,
-    MoveRecommendation,
+    SolverResponse,
 } from "./solverTypes";
 
 export class JevSolver implements Solver {
-    solve(board: Board): MoveRecommendation[] {
-        // JEV reasoning will be implemented here.
-        return [];
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    solve(_board: Board): SolverResponse {
+        // JEV reasoning is performed via API calls in route /api/jev.
+        return {
+            recommendations: [],
+            hasContradiction: false,
+        };
     }
 }
